@@ -99,11 +99,6 @@ textarea {
 }
 
 
-img {
-  width: 100%;
-  height: auto;
-}
-
 /* Layout */
 .container {
   max-width: 982px;
@@ -115,15 +110,6 @@ img {
   max-height: 768px;
   overflow-y: auto; /* Enable vertical scrolling */
 }
-
-/* Window Section */
-.window-image {
-  max-height: 528px;
-  filter: drop-shadow(0px 44px 34px rgba(0, 0, 0, 0.25));
-  overflow: hidden;
-  border-radius: var(--border-radius);
-}
-
 
 /* Main Header */
 .header {
@@ -345,6 +331,7 @@ img {
 
 /* Footer */
 .footer {
+  padding-top: 5px;
   margin: 0.5rem;
   text-align: center;
 }
@@ -355,32 +342,6 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.admin-posts {
-  padding: 0;
-  margin: 0;
-}
-
-.admin-post-controls form {
-  display: inline-block;
-}
-
-.admin-post-controls .btn  {
-  display: inline-block;
-  background-color: var(--black);
-  color: var(--gray-light);
-  border: 0;
-  text-decoration: none;
-  font-size: .8rem;
-  padding: 4px 8px;
-  line-height: 2;
-}
-
-.admin-posts li {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
 }
 
 .admin-students {
@@ -466,7 +427,7 @@ body {
   margin-top: 20px;
   padding: 20px;
   width: 90%;
-  max-width: 400px;
+  max-width: 360px;
 }
 
 .tutordiv h2 {
@@ -489,48 +450,4 @@ body {
   .tutordiv {
     width: 100%;
   }
-}
-
-
-/* SeachBar */
-.searchBar {
-  visibility: hidden;
-  transform: translateY(-100px);
-  background-color: var(--black);
-  padding: 4px 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-}
-
-
-.searchBar.open {
-  transform: translateY(0);
-  transition: transform 0.1s;
-}
-
-.searchBar input {
-  margin: 0;
-  border: 0;
-}
-
-#searchClose {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: var(--gray-light);
-  padding: 15px;
-}
-
-
-.pagination {
-  font-size: 1.3rem;
-  color: var(--gray);
-  text-decoration: none;
-  margin-top: 40px;
-  display: inline-block;
-}
-
-.pagination:hover {
-  color: var(--black);
 }
