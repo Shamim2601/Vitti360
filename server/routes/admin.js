@@ -191,8 +191,14 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
       try {
         const newTutor = new Tutor({
           name: req.body.name,
-          tutions: req.body.tutions,
           institution: req.body.institution,
+          dept: req.body.dept,
+          hsc: req.body.hsc,
+          background: req.body.background,
+          college: req.body.college,
+          expertise: req.body.expertise,
+          mode: req.body.mode,
+          rating: req.body.rating,
         });
   
         await Tutor.create(newTutor);

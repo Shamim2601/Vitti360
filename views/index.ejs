@@ -7,29 +7,18 @@
 <section class="articles">
   <h2 class="articles__heading">All the Tutors</h2>
 
-  <table class="article-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Institution</th>
-        <th>Total Tutions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% data.forEach(tutor=> { %>
-        <tr>
-          <td>
-            <%= tutor.name %>
-          </td>
-          <td>
-            <%= tutor.institution %>
-          </td>
-          <td>
-            <%= tutor.tutions %>
-          </td>
-        </tr>
-        <% }) %>
-    </tbody>
-  </table>
+  <% data.forEach(tutor=> { %>
+    <div class="tutordiv">
+      <h2>Name: <%= tutor.name %></h2>
+      <p><strong>Institution:</strong> <%= tutor.institution %></p>
+      <p><strong>Department:</strong> <%= tutor.dept %></p>
+      <p><strong>HSC Batch:</strong> <%= tutor.hsc %></p>
+      <p><strong>Background:</strong> <%= tutor.background %></p>
+      <p><strong>College:</strong> <%= tutor.college %></p>
+      <p><strong>Expertise:</strong> <%= tutor.expertise %></p>
+      <p><strong>Mode:</strong> <%= tutor.mode %></p>
+      <p><strong>QTutor Rating(10):</strong> <%= tutor.rating %></p>
+    </div>  
+  <% }) %>
 
 </section>

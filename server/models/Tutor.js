@@ -7,21 +7,37 @@ const TutorSchema = new Schema({
         type: String,
         required: true
     },
-    tutions: {
-        type: Number,
-        required: true
-    },
     institution: {
         type: String,
         required: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    dept: {
+        type: String,
+        required: true
     },
-    updatedAt: {
-        type: Date,
-        default: Date.now
+    hsc: {
+        type: String,
+        required: true
+    },
+    background: {
+        type: String,
+        required: true
+    },
+    college: {
+        type: String,
+        required: true
+    },
+    expertise: {
+        type: String,
+        required: true
+    },
+    mode: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
     },
 })
 

@@ -26,12 +26,18 @@
   <a href="/add-tutor" class="button">+ Add New</a>
 </div>
 
-<table class="admin-students">
+<table class="admin-tutors">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Institution</th>
-      <th>Tutions</th>
+      <th>Inst</th>
+      <th>Dept</th>
+      <th>HSC</th>
+      <th>Back</th>
+      <th>College</th>
+      <th>Exp</th>
+      <th>Mode</th>
+      <th>Rate</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -45,7 +51,25 @@
           <%= tutor.institution %>
         </td>
         <td>
-          <%= tutor.tutions %>
+          <%= tutor.dept %>
+        </td>
+        <td>
+          <%= tutor.hsc %>
+        </td>
+        <td>
+          <%= tutor.background %>
+        </td>
+        <td>
+          <%= tutor.college %>
+        </td>
+        <td>
+          <%= tutor.expertise %>
+        </td>
+        <td>
+          <%= tutor.mode %>
+        </td>
+        <td>
+          <%= tutor.rating %>
         </td>
         <td>
           <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
