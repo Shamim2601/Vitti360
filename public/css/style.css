@@ -107,7 +107,8 @@ textarea {
 }
 
 .main {
-  max-height: 768px;
+  margin-top: 10px;
+  max-height: 896px;
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -134,7 +135,7 @@ textarea {
 .header__logo {
   color: blueviolet;
   font-weight: 800;
-  font-size: 30px;
+  font-size: 36px;
   text-decoration: none;
   grid-area: logo;
 }
@@ -211,8 +212,8 @@ textarea {
 }
 
 .author__body {
-  font-size: var(--font-size-md);
-  margin: 5px 0 40px 0;
+  font-size: 28px;
+  margin-top: 20px;
 }
 
 .author__text{
@@ -224,7 +225,6 @@ textarea {
 
 /* Home Article List */
 .articles__heading {
-  margin-top: 4rem;
   font-weight: 400;
 }
 
@@ -424,16 +424,10 @@ body {
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
   width: 90%;
   max-width: 360px;
-}
-
-.tutordiv h2 {
-  font-size: 1.5em;
-  color: #4CAF50;
-  margin-bottom: 10px;
 }
 
 .tutordiv p {

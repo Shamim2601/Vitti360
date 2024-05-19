@@ -1,12 +1,11 @@
 <div class="author">
-  <h1 class="author__heading"><strong>QTutor</strong></h1>
-  <p class="author__body">Qualified Tutors from <strong><i>BUET | DU | Medical | Cadet</i></strong></p>
+  <p class="author__body"><strong><i>BUET | DU | Medical | Cadet</i></strong></p>
 </div>
 
 
 <section class="articles">
-  <h2 class="articles__heading">
-    <strong>Find Best Tutor</strong>
+  <h4 class="articles__heading">
+    <strong>Qualified Tutors</strong>
     <form action="/filter-tutors" method="GET" style="display: flex;">
       <span style="margin-right: 10px;">
         <select name="tag" id="tagFilter" style="width: 200px; height: 64px">
@@ -19,12 +18,12 @@
       </span>
       <input type="submit" value="Filter" style="width: 150px; height: 64px;">
     </form>
-  </h2>
+  </h4>
 
   <div class="main">
     <% data.forEach(tutor=> { %>
       <div class="tutordiv">
-        <h3>
+        <h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">
           <span style="color: blueviolet; font-size: 1em;">
             <%= tutor.id %>
           </span> |
@@ -32,6 +31,7 @@
             <%= tutor.tag %>
           </span>
         </h3>
+        <hr>
         <p><strong>Name:</strong>
           <%= tutor.name %>
         </p>
