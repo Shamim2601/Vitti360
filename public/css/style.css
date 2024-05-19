@@ -112,7 +112,7 @@ img {
 }
 
 .main {
-  max-height: 512px;
+  max-height: 768px;
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -345,7 +345,7 @@ img {
 
 /* Footer */
 .footer {
-  margin: 4rem;
+  margin: 0.5rem;
   text-align: center;
 }
 
