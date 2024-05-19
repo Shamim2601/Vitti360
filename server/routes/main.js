@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Tutor');
+const Tutor = require('../models/Tutor');
 
 // Routes
 

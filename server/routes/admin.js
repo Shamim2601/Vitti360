@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/Tutor');
-const User = require('../models/Admin');
-const User = require('../models/Student');
+const Tutor = require('../models/Tutor');
+const Admin = require('../models/Admin');
+const Student = require('../models/Student');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -62,6 +62,8 @@ router.post('/admin', async (req, res)=>{
         const { username, password } = req.body;
 
         const admin = await Admin.findOne({username});
+
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         if(!admin){
             res.status(401).json({ message: 'Invalid Credentials'});

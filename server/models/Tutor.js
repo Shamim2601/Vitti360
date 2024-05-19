@@ -11,7 +11,7 @@ const TutorSchema = new Schema({
         type: Number,
         required: true
     },
-    instituion: {
+    institution: {
         type: String,
         required: true
     },
