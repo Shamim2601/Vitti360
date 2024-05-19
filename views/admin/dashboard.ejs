@@ -1,0 +1,59 @@
+<style>
+  .hide {
+    display: none;
+  }
+</style>
+
+<div>
+  <h3 id="registerHeading">Register New Admin</h3>
+  <form id="registerForm" action="/register" method="POST" class="hide">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username">
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password">
+    <div class="btn-container">
+      <input type="submit" value="Register" class="btn">
+    </div>
+  </form>
+</div>
+
+<script>
+  // Get the heading element
+  const registerHeading = document.getElementById('registerHeading');
+  // Get the form element
+  const registerForm = document.getElementById('registerForm');
+
+  // Add click event listener to the heading element
+  registerHeading.addEventListener('click', function() {
+    // Toggle the 'hide' class on the form element
+    registerForm.classList.toggle('hide');
+  });
+</script>
+
+<a href="/student-list" style="text-decoration:none"><h3>View/Add/Update Students</h3></a>
+
+<div class="admin-title">
+    <h2>Tutors</h2>
+    <a href="/add-tutor" class="button">+ Add New</a>
+  </div>
+  
+  <ul class="admin-posts">
+  
+    <% data.forEach(tutor => { %>
+     
+      <li>
+        <a href="<%= tutor.institution %>">
+          <%= tutor.name %> = <%= tutor.tutions %> marks &nearr;
+        </a>
+        <div class="admin-post-controls">
+  
+          <form action="/delete-tutor/<%= post._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn-delete btn">
+          </form>
+  
+        </div>
+  
+      </li>
+  
+    <% }) %>
+  </ul>

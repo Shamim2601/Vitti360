@@ -1,0 +1,34 @@
+<a href="/dashboard">&larr; Back</a>
+<div class="admin-title">
+  <h2>Add New Student</h2>
+</div>
+
+<form action="/add-student" method="POST" onsubmit="return validateForm()">
+
+  <label for="name"><b>Name</b></label>
+  <input type="text" placeholder="Student Name" name="name" required>
+
+  <label for="roll"><b>Roll</b></label> 
+  <input type="text" placeholder="Roll" name="roll" required>
+  <br>
+
+  <label for="phone"><b>Phone Number</b></label>
+  <input type="text" placeholder="11 digit phone number" name="phone" pattern="\d{11}" title="Please enter 11 digits numeric phone number" required>
+
+  <!--label for="body"><b>Content</b></label>
+  <textarea name="body" cols="50" rows="10"></textarea-->
+
+  <input type="submit" value="Add" class="btn">
+
+</form>
+
+<script>
+  function validateForm() {
+    var phoneInput = document.forms["addStudentForm"]["phone"].value;
+    if (!/\d{11}/.test(phoneInput)) {
+      alert("Please enter a 11-digit numeric phone number");
+      return false;
+    }
+    return true;
+  }
+</script>

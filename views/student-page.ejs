@@ -1,0 +1,43 @@
+
+<div class="author">
+    <h1 class="author__heading"><strong>𝑽𝒊𝒕𝒕𝒊 𝑬𝒅𝒖𝑻𝒆𝒄𝒉</strong></h1>
+    <p class="author__body"><strong><i>𝐄-𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠 𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦</i></strong></p>
+    <p class="author__text">
+        বেশি বেশি প্র্যাক্টিস এক্সামে অংশ নিন। জব, অ্যাডমিশন সহ যেকোন প্রতিযোগিতামূলক পরীক্ষার জন্য নিজেকে প্রস্তুত করুন। <br>
+        মজবুত ভিত্তি = নিশ্চিত সাফল্য
+    </p>
+</div>
+
+<!-- <img src="/img/tree.webp" class="window-image" alt="window" width="981" height="528"> -->
+
+<section class="articles">
+    <h2 class="articles__heading">All Exams</h2>
+
+    <table class="article-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Marks</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(post => { %>
+            <tr>
+              <td><a href="<%= post.link %>"><%= post.title %></a></td>
+              <td><%= post.marks %></td>
+              <td><%= post.createdAt.toDateString() %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      
+    
+</section>
+<br>
+<br>
+<section class="articles">
+    <a class="student_btn" href="https://www.facebook.com/profile.php?id=61555416237280"><h4>অ্যাডমিন কে মেসেজ দিন</h4></a>
+
+    <a class="student_btn" href="https://www.facebook.com/vitti123"><h4>ফেসবুক পেজ ফলো করুন</h4></a>
+</section>

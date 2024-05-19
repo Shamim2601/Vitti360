@@ -1,0 +1,29 @@
+<div class="admin-title">
+    <h2>Students</h2>
+    <a href="/add-student" class="button">+ Add New Student</a>
+</div>
+
+<table class="admin-students">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(student => { %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.roll %></td>
+          <td><%= student.phone %></td>
+          <td>
+            <form action="/delete-student/<%= student._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete" class="btn-delete btn">
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>  
