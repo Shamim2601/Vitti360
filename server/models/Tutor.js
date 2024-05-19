@@ -7,6 +7,14 @@ const TutorSchema = new Schema({
         type: String,
         required: true
     },
+    id:{
+        type: String,
+        required: true
+    },
+    tag:{
+        type: String,
+        required: true
+    },
     institution: {
         type: String,
         required: true

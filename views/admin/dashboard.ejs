@@ -30,6 +30,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>ID</th>
+      <th>Tag</th>
       <th>Inst</th>
       <th>Dept</th>
       <th>HSC</th>
@@ -38,7 +40,7 @@
       <th>Exp</th>
       <th>Mode</th>
       <th>Rate</th>
-      <th>Action</th>
+      <th>Del</th>
     </tr>
   </thead>
   <tbody>
@@ -46,6 +48,12 @@
       <tr>
         <td>
           <%= tutor.name %>
+        </td>
+        <td>
+          <%= tutor.id %>
+        </td>
+        <td>
+          <%= tutor.tag %>
         </td>
         <td>
           <%= tutor.institution %>
@@ -73,7 +81,7 @@
         </td>
         <td>
           <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete" class="btn-delete btn">
+            <input type="submit" value="Del" class="btn-delete btn">
           </form>
         </td>
       </tr>

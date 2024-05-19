@@ -120,7 +120,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
         description: 'Simple Site created with NodeJs, Express & MongoDb.'
       }
   
-      const data = await Tutor.find().sort({ createdAt: -1 });
+      const data = await Tutor.find().sort({ id: -1 });
       res.render('admin/dashboard', {
         locals,
         data,
@@ -191,6 +191,8 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
       try {
         const newTutor = new Tutor({
           name: req.body.name,
+          id: req.body.id,
+          tag: req.body.tag,
           institution: req.body.institution,
           dept: req.body.dept,
           hsc: req.body.hsc,

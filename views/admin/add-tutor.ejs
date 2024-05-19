@@ -8,6 +8,17 @@
   <label for="name"><b>Name</b></label>
   <input type="text" placeholder="Abdullah" name="name">
 
+  <label for="id"><b>ID</b></label>
+  <input type="text" placeholder="t1" name="id">
+
+  <label for="tag"><b>Tag</b></label>
+  <select name="tag" id="tag">
+    <option value="buet">BUET</option>
+    <option value="du">DU</option>
+    <option value="medical">Medical</option>
+    <option value="cadet">Cadet</option>
+  </select>
+
   <label for="institution"><b>Institution</b></label>
   <input type="text" placeholder="BUET" name="institution">
 
@@ -18,7 +29,11 @@
   <input type="text" placeholder="2018" name="hsc">
 
   <label for="background"><b>Background</b></label>
-  <input type="text" placeholder="EV" name="background">
+  <select name="background" id="background">
+    <option value="BV">Bangla Version</option>
+    <option value="EV">English Version</option>
+    <option value="EM">English Medium</option>
+  </select>
 
   <label for="college"><b>College</b></label>
   <input type="text" placeholder="NDC" name="college">
@@ -27,7 +42,11 @@
   <input type="text" placeholder="HSC Science, Programming" name="expertise">
 
   <label for="mode"><b>Mode</b></label>
-  <input type="text" placeholder="Offline" name="mode">
+  <select name="mode" id="mode">
+    <option value="Offline">Offline</option>
+    <option value="Online">Online</option>
+    <option value="Offline/Online">Both</option>
+  </select>
 
   <label for="rating"><b>Rating</b></label>
   <input type="number" placeholder="9" name="rating">
