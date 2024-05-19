@@ -21,45 +21,47 @@
     </form>
   </h2>
 
-  <% data.forEach(tutor=> { %>
-    <div class="tutordiv">
-      <h3>
-        <span style="color: blueviolet; font-size: 1em;">
-          <%= tutor.id %>
-        </span> |
-        <span style="color: red; font-size: 1em;">
-          <%= tutor.tag %>
-        </span>
-      </h3>
-      <p><strong>Name:</strong>
-        <%= tutor.name %>
-      </p>
-      <p><strong>Institution:</strong>
-        <%= tutor.institution %>
-      </p>
-      <p><strong>Department:</strong>
-        <%= tutor.dept %>
-      </p>
-      <p><strong>HSC Batch:</strong>
-        <%= tutor.hsc %>
-      </p>
-      <p><strong>Background:</strong>
-        <%= tutor.background %>
-      </p>
-      <p><strong>College:</strong>
-        <%= tutor.college %>
-      </p>
-      <p><strong>Expertise:</strong>
-        <%= tutor.expertise %>
-      </p>
-      <p><strong>Mode:</strong>
-        <%= tutor.mode %>
-      </p>
-      <p><strong>QTutor Rating(10):</strong>
-        <%= tutor.rating %>
-      </p>
-    </div>
+  <div class="main">
+    <% data.forEach(tutor=> { %>
+      <div class="tutordiv">
+        <h3>
+          <span style="color: blueviolet; font-size: 1em;">
+            <%= tutor.id %>
+          </span> |
+          <span style="color: red; font-size: 1em;">
+            <%= tutor.tag %>
+          </span>
+        </h3>
+        <p><strong>Name:</strong>
+          <%= tutor.name %>
+        </p>
+        <p><strong>Institution:</strong>
+          <%= tutor.institution %>
+        </p>
+        <p><strong>Department:</strong>
+          <%= tutor.dept %>
+        </p>
+        <p><strong>HSC Batch:</strong>
+          <%= tutor.hsc %>
+        </p>
+        <p><strong>Background:</strong>
+          <%= tutor.background %>
+        </p>
+        <p><strong>College:</strong>
+          <%= tutor.college %>
+        </p>
+        <p><strong>Expertise:</strong>
+          <%= tutor.expertise %>
+        </p>
+        <p><strong>Mode:</strong>
+          <%= tutor.mode %>
+        </p>
+        <p><strong>QTutor Rating(10):</strong>
+          <%= tutor.rating %>
+        </p>
+      </div>
     <% }) %>
+  </div>
 
 
 </section>

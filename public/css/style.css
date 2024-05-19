@@ -112,7 +112,8 @@ img {
 }
 
 .main {
-  padding: 20px 0;
+  max-height: 512px;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* Window Section */
