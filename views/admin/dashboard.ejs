@@ -5,7 +5,7 @@
 </style>
 
 <div>
-  <h3 id="registerHeading">Register New Admin</h3>
+  <a class="btn-admin"><h3 id="registerHeading">Register New Admin</h3></a>
   <form id="registerForm" action="/register" method="POST" class="hide">
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username">
@@ -17,6 +17,47 @@
   </form>
 </div>
 
+<a href="/student-list" class="btn-admin">
+  <h3>View/Add/Update Students</h3>
+</a>
+
+<div class="admin-title">
+  <h2>Tutors</h2>
+  <a href="/add-tutor" class="button">+ Add New</a>
+</div>
+
+<table class="admin-students">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Institution</th>
+      <th>Tutions</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data.forEach(tutor=> { %>
+      <tr>
+        <td>
+          <%= tutor.name %>
+        </td>
+        <td>
+          <%= tutor.institution %>
+        </td>
+        <td>
+          <%= tutor.tutions %>
+        </td>
+        <td>
+          <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn-delete btn">
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+  </tbody>
+</table>
+
+
 <script>
   // Get the heading element
   const registerHeading = document.getElementById('registerHeading');
@@ -24,36 +65,8 @@
   const registerForm = document.getElementById('registerForm');
 
   // Add click event listener to the heading element
-  registerHeading.addEventListener('click', function() {
+  registerHeading.addEventListener('click', function () {
     // Toggle the 'hide' class on the form element
     registerForm.classList.toggle('hide');
   });
 </script>
-
-<a href="/student-list" style="text-decoration:none"><h3>View/Add/Update Students</h3></a>
-
-<div class="admin-title">
-    <h2>Tutors</h2>
-    <a href="/add-tutor" class="button">+ Add New</a>
-  </div>
-  
-  <ul class="admin-posts">
-  
-    <% data.forEach(tutor => { %>
-     
-      <li>
-        <a href="<%= tutor.institution %>">
-          <%= tutor.name %> = <%= tutor.tutions %> marks &nearr;
-        </a>
-        <div class="admin-post-controls">
-  
-          <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete" class="btn-delete btn">
-          </form>
-  
-        </div>
-  
-      </li>
-  
-    <% }) %>
-  </ul>

@@ -160,7 +160,7 @@ router.get('/student-list', authMiddleware, async (req, res) => {
 
 /**
  * GET /
- * Admin - Create New Post
+ * Admin - Create New Tutor
 */
 router.get('/add-tutor', authMiddleware, async (req, res) => {
     try {
@@ -208,6 +208,22 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
 
 
 /**
+ * DELETE /
+ * Admin - Delete Tutor
+*/
+router.delete('/delete-tutor/:id', authMiddleware, async (req, res) => {
+
+  try {
+    await Tutor.deleteOne( { _id: req.params.id } );
+    res.redirect('/dashboard');
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
+/**
  * GET /
  * Admin - Add New Student
 */
@@ -233,7 +249,7 @@ router.get('/add-student', authMiddleware, async (req, res) => {
 
 /**
  * POST /
- * Admin - Create New Post
+ * Admin - Add New Student
 */
 router.post('/add-student', authMiddleware, async (req, res) => {
     try {
@@ -250,22 +266,6 @@ router.post('/add-student', authMiddleware, async (req, res) => {
     }
 });
 
-  
-
-/**
- * DELETE /
- * Admin - Delete Post
-*/
-router.delete('/delete-tutor/:id', authMiddleware, async (req, res) => {
-
-    try {
-      await Tutor.deleteOne( { _id: req.params.id } );
-      res.redirect('/dashboard');
-    } catch (error) {
-      console.log(error);
-    }
-  
-  });
 
 /**
  * DELETE /
@@ -281,6 +281,8 @@ router.delete('/delete-student/:id', authMiddleware, async (req, res) => {
   }
 
 });
+
+
 
 /**
  * GET /

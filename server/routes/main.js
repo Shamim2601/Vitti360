@@ -16,9 +16,7 @@ router.get('', async (req, res) => {
         description: "Simple Site created with NodeJs, Express & MongoDb."
       }
   
-      const data = await Tutor.aggregate([
-        { $sample: { size: 2 } }
-      ]);      
+      const data = await Tutor.find().sort({ tutions:-1 });
   
       res.render('index', { 
         locals,
