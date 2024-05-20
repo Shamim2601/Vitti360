@@ -43,6 +43,18 @@ const TutorSchema = new Schema({
         type: String,
         required: true
     },
+    pref: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    fb: {
+        type: String,
+        required: true
+    },
     rating: {
         type: Number,
         required: true

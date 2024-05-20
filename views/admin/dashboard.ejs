@@ -39,8 +39,9 @@
       <th>College</th>
       <th>Exp</th>
       <th>Mode</th>
+      <th>Pref</th>
       <th>Rate</th>
-      <th>Del</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -54,6 +55,10 @@
         </td>
         <td>
           <%= tutor.tag %>
+        </td>
+        <td>
+          <a href="<%= tutor.fb %>" style="text-decoration: none;">ⓕ</a>
+          <a href="tel:<%= tutor.phone %>" style="text-decoration: none;">📞</a> 
         </td>
         <td>
           <%= tutor.institution %>
@@ -77,13 +82,24 @@
           <%= tutor.mode %>
         </td>
         <td>
+          <%= tutor.pref %>
+        </td>
+        <td>
           <%= tutor.rating %>
         </td>
         <td>
+          <div style="display: flex; gap: 5px;">
+            <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST" style="margin: 0;">
+              <input type="submit" value="+" class="">
+            </form>
+            <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST" style="margin: 0;">
+              <input type="submit" value="-" class="">
+            </form>
+          </div>
           <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Del" class="btn-delete btn">
+            <input type="submit" value="Del" class="btn-delete btn" style="display: block; margin-top: 5px;">
           </form>
-        </td>
+        </td>        
       </tr>
       <% }) %>
   </tbody>

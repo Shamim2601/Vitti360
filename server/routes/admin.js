@@ -200,6 +200,9 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
           college: req.body.college,
           expertise: req.body.expertise,
           mode: req.body.mode,
+          pref: req.body.pref,
+          phone: req.body.phone,
+          fb: req.body.fb,
           rating: req.body.rating,
         });
   
