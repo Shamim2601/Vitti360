@@ -10,7 +10,6 @@ const adminLayout = '../views/layouts/admin';
 const jwtSecret = process.env.JWT_SECRET
 
 
-
 /**
  * 
  * Check Login
@@ -193,6 +192,34 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
     }
   });
 
+
+/**
+ * GET /
+ * Admin - Increment Tutor Rating
+ */
+router.get('/inc_rating/:id', authMiddleware, async (req, res) => {
+  try {
+    await Tutor.findByIdAndUpdate(req.params.id, { $inc: { rating: 1 } });
+    res.redirect('/dashboard'); // redirect to the appropriate page after incrementing
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
+
+/**
+ * GET /
+ * Admin - Decrement Tutor Rating
+ */
+router.get('/dec_rating/:id', authMiddleware, async (req, res) => {
+  try {
+    await Tutor.findByIdAndUpdate(req.params.id, { $inc: { rating: -1 } });
+    res.redirect('/dashboard'); // redirect to the appropriate page after decrementing
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
 
 /**
  * DELETE /

@@ -90,17 +90,13 @@
         </td>
         <td>
           <div style="display: flex; gap: 5px;">
-            <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST" style="margin: 0;">
-              <input type="submit" value="+" class="">
-            </form>
-            <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST" style="margin: 0;">
-              <input type="submit" value="-" class="">
-            </form>
+            <a href="/inc_rating/<%= tutor._id %>" class="" style="text-decoration: none;">⬆️</a>
+            <a href="/dec_rating/<%= tutor._id %>" class="" style="text-decoration: none;">⬇️</a>
           </div>
           <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
             <input type="submit" value="Del" class="btn-delete btn" style="display: block; margin-top: 5px;">
           </form>
-        </td>        
+        </td>     
       </tr>
       <% }) %>
   </tbody>
