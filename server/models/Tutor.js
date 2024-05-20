@@ -8,7 +8,7 @@ const TutorSchema = new Schema({
         required: true
     },
     id:{
-        type: String,
+        type: Number,
         required: true
     },
     tag:{

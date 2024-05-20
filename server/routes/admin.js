@@ -120,7 +120,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
         description: 'Simple Site created with NodeJs, Express & MongoDb.'
       }
   
-      const data = await Tutor.find().sort({ id: -1 });
+      const data = await Tutor.find().sort({ id: 1 });
       res.render('admin/dashboard', {
         locals,
         data,
@@ -168,12 +168,11 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
       let highestId = 1;
   
       if (tutors.length > 0) {
-          const highestIdStr = tutors[0].id; // Get the highest ID from the result
-          const numericPart = parseInt(highestIdStr.substring(1)); // Extract numeric part after the prefix "t"
-          highestId = numericPart + 1; // Increment the numeric part
+          const highestIdprev = tutors[0].id;
+          highestId = highestIdprev + 1;
       }
   
-      const newId = "t" + highestId; // Form the new ID by concatenating the prefix "t" with the incremented numeric part
+      const newId = highestId;
       try {
         const newTutor = new Tutor({
           name: req.body.name,
@@ -286,12 +285,12 @@ router.get('/approve-reg/:id', authMiddleware, async (req, res) => {
     let highestId = 1;
 
     if (tutors.length > 0) {
-        const highestIdStr = tutors[0].id; // Get the highest ID from the result
-        const numericPart = parseInt(highestIdStr.substring(1)); // Extract numeric part after the prefix "t"
-        highestId = numericPart + 1; // Increment the numeric part
+      const highestIdprev = tutors[0].id;
+      highestId = highestIdprev + 1;
     }
 
-    const newId = "t" + highestId; // Form the new ID by concatenating the prefix "t" with the incremented numeric part
+
+    const newId = highestId;
     
     // Create a new Tutor using the properties of the registration tutor
     const newTutor = new Tutor({
@@ -439,5 +438,31 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
   });
 
+
+/*
+
+ * GET /update
+ * Admin - Update tutor IDs to sequential numbers
+
+router.get('/update', async (req, res) => {
+  try {
+    // Fetch all tutors
+    const tutors = await Tutor.find();
+
+    // Update each tutor's id to a sequential number starting from 1
+    for (let i = 0; i < tutors.length; i++) {
+      tutors[i].id = i + 1;
+      await tutors[i].save();
+    }
+
+    // Redirect or send a response after update
+    res.redirect('/'); // or send a success message
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
+
+*/
 
 module.exports = router;
