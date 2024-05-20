@@ -19,6 +19,9 @@ const StudentSchema = new Schema({
         type: String,
         required: true,
     },
+    tutor:{
+        type: String,
+    }
 })
 
 

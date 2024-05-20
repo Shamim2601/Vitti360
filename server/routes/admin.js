@@ -401,6 +401,7 @@ router.post('/add-student', authMiddleware, async (req, res) => {
         institution: req.body.institution,
         class: req.body.class,
         phone: req.body.phone,
+        tutor: req.body.tutor
       });
 
       await Student.create(newStudent);

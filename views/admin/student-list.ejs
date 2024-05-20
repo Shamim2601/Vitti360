@@ -1,5 +1,5 @@
 <div class="admin-title">
-  <h2>Students</h2>
+  <h2>Tutions</h2>
   <a href="/add-student" class="button">+ Add New Student</a>
 </div>
 
@@ -10,6 +10,7 @@
       <th>Inst</th>
       <th>Class</th>
       <th>Call</th>
+      <th>Tutor</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -27,6 +28,9 @@
         </td>
         <td>
           <a href="tel:<%= student.phone %>" style="text-decoration: none;">📞</a>
+        </td>
+        <td>
+          <%= student.tutor %>
         </td>
         <td>
           <form action="/delete-student/<%= student._id %>?_method=DELETE" method="POST">
