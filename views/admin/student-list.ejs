@@ -7,8 +7,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Roll</th>
-      <th>Phone</th>
+      <th>Inst</th>
+      <th>Class</th>
+      <th>Call</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -19,14 +20,17 @@
           <%= student.name %>
         </td>
         <td>
-          <%= student.roll %>
+          <%= student.institution %>
         </td>
         <td>
-          <%= student.phone %>
+          <%= student.class %>
+        </td>
+        <td>
+          <a href="tel:<%= student.phone %>" style="text-decoration: none;">📞</a>
         </td>
         <td>
           <form action="/delete-student/<%= student._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete" class="btn-delete btn">
+            <input type="submit" value="Del" class="btn-delete btn">
           </form>
         </td>
       </tr>

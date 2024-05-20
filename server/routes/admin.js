@@ -133,30 +133,6 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
   
   });
 
-/*
- * GET /
- * Admin Student List
-*/
-router.get('/student-list', authMiddleware, async (req, res) => {
-  try {
-    const locals = {
-      title: 'Student List',
-      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
-    }
-
-    const data = await Student.find().sort({ roll:1 });
-    res.render('admin/student-list', {
-      locals,
-      data,
-      layout: adminLayout
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-
-});
-
 
 /**
  * GET /
@@ -234,6 +210,31 @@ router.delete('/delete-tutor/:id', authMiddleware, async (req, res) => {
 });
 
 
+/*
+ * GET /
+ * Admin Student List
+*/
+router.get('/student-list', authMiddleware, async (req, res) => {
+  try {
+    const locals = {
+      title: 'Student List',
+      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+    }
+
+    const data = await Student.find().sort({class:-1});
+    res.render('admin/student-list', {
+      locals,
+      data,
+      layout: adminLayout
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
 /**
  * GET /
  * Admin - Add New Student
@@ -266,7 +267,8 @@ router.post('/add-student', authMiddleware, async (req, res) => {
     try {
       const newStudent = new Student({
         name: req.body.name,
-        roll: req.body.roll,
+        institution: req.body.institution,
+        class: req.body.class,
         phone: req.body.phone,
       });
 

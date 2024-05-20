@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
-    roll:{
+    name:{
         type: String,
         required: true,
-        unique: true
     },
-    name:{
+    institution:{
+        type: String,
+        required: true,
+    },
+    class:{
         type: String,
         required: true,
     },
