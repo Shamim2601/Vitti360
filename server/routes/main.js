@@ -91,20 +91,9 @@ router.get('/reg-tutor', async (req, res) => {
 */
 router.post('/reg-tutor', async (req, res) => {
   try {
-    const tutors = await Tutor.find({}, { id: 1 }).sort({ id: -1 }).limit(1); // Find the tutor with the highest ID
-    let highestId = 1;
-
-    if (tutors.length > 0) {
-        const highestIdStr = tutors[0].id; // Get the highest ID from the result
-        const numericPart = parseInt(highestIdStr.substring(1)); // Extract numeric part after the prefix "t"
-        highestId = numericPart + 1; // Increment the numeric part
-    }
-
-    const newId = "t" + highestId; // Form the new ID by concatenating the prefix "t" with the incremented numeric part
     try {
       const newregTutor = new regTutor({
         name: req.body.name,
-        id: newId,
         tag: req.body.tag,
         institution: req.body.institution,
         dept: req.body.dept,
@@ -116,7 +105,6 @@ router.post('/reg-tutor', async (req, res) => {
         pref: req.body.pref,
         phone: req.body.phone,
         fb: req.body.fb,
-        rating: 5,
       });
 
       await regTutor.create(newregTutor);

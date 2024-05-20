@@ -3,6 +3,7 @@ const router = express.Router();
 const Tutor = require('../models/Tutor');
 const Admin = require('../models/Admin');
 const Student = require('../models/Student');
+const regTutor = require('../models/regTutor');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -163,10 +164,20 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
   */
   router.post('/add-tutor', authMiddleware, async (req, res) => {
     try {
+      const tutors = await Tutor.find({}, { id: 1 }).sort({ id: -1 }).limit(1); // Find the tutor with the highest ID
+      let highestId = 1;
+  
+      if (tutors.length > 0) {
+          const highestIdStr = tutors[0].id; // Get the highest ID from the result
+          const numericPart = parseInt(highestIdStr.substring(1)); // Extract numeric part after the prefix "t"
+          highestId = numericPart + 1; // Increment the numeric part
+      }
+  
+      const newId = "t" + highestId; // Form the new ID by concatenating the prefix "t" with the incremented numeric part
       try {
         const newTutor = new Tutor({
           name: req.body.name,
-          id: req.body.id,
+          id: newId,
           tag: req.body.tag,
           institution: req.body.institution,
           dept: req.body.dept,
@@ -230,6 +241,100 @@ router.delete('/delete-tutor/:id', authMiddleware, async (req, res) => {
   try {
     await Tutor.deleteOne( { _id: req.params.id } );
     res.redirect('/dashboard');
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
+/*
+ * GET /
+ * Admin Reg List
+*/
+router.get('/reg-list', authMiddleware, async (req, res) => {
+  try {
+    const locals = {
+      title: 'Reg List',
+      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
+    }
+
+    const data = await regTutor.find().sort({tag:1});
+    res.render('admin/reg-list', {
+      locals,
+      data,
+      layout: adminLayout
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
+/**
+ * GET /
+ * Admin - Approve regTutor
+ */
+router.get('/approve-reg/:id', authMiddleware, async (req, res) => {
+  try {
+    // Find the registration tutor by ID
+    const regtutor = await regTutor.findById(req.params.id);
+
+    const tutors = await Tutor.find({}, { id: 1 }).sort({ id: -1 }).limit(1); // Find the tutor with the highest ID
+    let highestId = 1;
+
+    if (tutors.length > 0) {
+        const highestIdStr = tutors[0].id; // Get the highest ID from the result
+        const numericPart = parseInt(highestIdStr.substring(1)); // Extract numeric part after the prefix "t"
+        highestId = numericPart + 1; // Increment the numeric part
+    }
+
+    const newId = "t" + highestId; // Form the new ID by concatenating the prefix "t" with the incremented numeric part
+    
+    // Create a new Tutor using the properties of the registration tutor
+    const newTutor = new Tutor({
+      name: regtutor.name,
+      id: newId,
+      tag: regtutor.tag,
+      institution: regtutor.institution,
+      dept: regtutor.dept,
+      hsc: regtutor.hsc,
+      background: regtutor.background,
+      college: regtutor.college,
+      expertise: regtutor.expertise,
+      mode: regtutor.mode,
+      pref: regtutor.pref,
+      phone: regtutor.phone,
+      fb: regtutor.fb,
+      rating: 5
+    });
+
+    // Save the new tutor to the database
+    await newTutor.save();
+
+    await regtutor.deleteOne();
+
+    // Redirect to the registration list
+    res.redirect('/reg-list');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+
+/**
+ * DELETE /
+ * Admin - Delete regTutor
+*/
+router.delete('/delete-regtutor/:id', authMiddleware, async (req, res) => {
+
+  try {
+    await regTutor.deleteOne( { _id: req.params.id } );
+    res.redirect('/reg-list');
   } catch (error) {
     console.log(error);
   }
