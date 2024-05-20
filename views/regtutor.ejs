@@ -1,0 +1,94 @@
+<div class="admin-title">
+    <h2>Register as Teacher</h2>
+</div>
+
+<form name="regTutorForm" id="regTutorForm" action="/reg-tutor" method="POST">
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Abdullah" name="name" required>
+
+    <label for="tag"><b>Tag</b></label>
+    <select name="tag" id="tag" required>
+        <option value="buet">BUET</option>
+        <option value="du">DU</option>
+        <option value="medical">Medical</option>
+        <option value="cadet">Cadet</option>
+    </select>
+
+    <label for="institution"><b>Institution</b></label>
+    <input type="text" placeholder="BUET" name="institution" required>
+
+    <label for="dept"><b>Department</b></label>
+    <input type="text" placeholder="CSE" name="dept" required>
+
+    <label for="hsc"><b>HSC Batch</b></label>
+    <input type="text" placeholder="2018" name="hsc" required>
+
+    <label for="background"><b>Background</b></label>
+    <select name="background" id="background" required>
+        <option value="BV">Bangla Version</option>
+        <option value="EV">English Version</option>
+        <option value="EM">English Medium</option>
+    </select>
+
+    <label for="college"><b>College</b></label>
+    <input type="text" placeholder="NDC" name="college" required>
+
+    <label for="expertise"><b>Expertise</b></label>
+    <input type="text" placeholder="HSC Science, Programming" name="expertise" maxlength="25" required>
+
+    <label for="mode"><b>Mode</b></label>
+    <select name="mode" id="mode" required>
+        <option value="Offline">Offline</option>
+        <option value="Online">Online</option>
+        <option value="Offline/Online">Both</option>
+    </select>
+
+    <label for="pref"><b>Preferred Area</b></label>
+    <input type="text" placeholder="Azimpur, Demra" name="pref" maxlength="25" required>
+
+    <label for="phone"><b>Phone</b></label>
+    <input type="text" placeholder="01234567890" name="phone" required>
+
+    <label for="fb"><b>FB Profile Link</b></label>
+    <input type="text" placeholder="https://www.facebook.com/samamun60" name="fb" required>
+
+    <p>Thanks for your interest in QTutor! We'll review your submission.</p>
+    <input type="submit" value="Submit" class="btn">
+
+</form>
+
+<script>
+    function validateForm() {
+        // Validate phone number
+        var phoneInput = document.forms["regTutorForm"]["phone"].value;
+        if (!/^\d{11}$/.test(phoneInput)) {
+            alert("Please enter an 11-digit numeric phone number");
+            return false;
+        }
+
+        // Validate expertise and pref fields for max length
+        var expertiseInput = document.forms["regTutorForm"]["expertise"].value;
+        var prefInput = document.forms["regTutorForm"]["pref"].value;
+        var insInput = document.forms["regTutorForm"]["institution"].value;
+        var collegeInput = document.forms["regTutorForm"]["college"].value;
+        if (expertiseInput.length > 25) {
+            alert("Expertise field should not exceed 25 characters");
+            return false;
+        }
+        if (prefInput.length > 25) {
+            alert("Preferred Area field should not exceed 25 characters");
+            return false;
+        }
+        if (insInput.length > 25) {
+            alert("Institution field should not exceed 25 characters");
+            return false;
+        }
+        if (collegeInput.length > 25) {
+            alert("College field should not exceed 25 characters");
+            return false;
+        }
+
+        return true;
+    }
+</script>
