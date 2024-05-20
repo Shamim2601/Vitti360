@@ -101,7 +101,7 @@ textarea {
 
 /* Layout */
 .container {
-  max-width: 982px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
 }
@@ -124,7 +124,7 @@ textarea {
   padding-top: 10px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .header {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: 
@@ -228,36 +228,6 @@ textarea {
   font-weight: 400;
 }
 
-.article-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
-  display: flex;
-  flex-direction: column;
-}
-
-.article-list__item span {
-  display: inline-block;
-  margin-right: 40px; /* Adjust as needed */
-}
-
-
-.article-list__date {
-  font-size: 1rem;
-  color: var(--gray);
-  /* width: 100px; */
-  display: inline-block;
-  width: 260px;
-}
-
-.article-ul li a {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-decoration: none;
-  margin: 18px 0;
-}
 
 #studentLogin {
   font-size: 32px;
@@ -290,7 +260,7 @@ textarea {
 }
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .article-ul li a {
     flex-direction: row;
     align-items: center;
@@ -427,7 +397,7 @@ body {
   margin-bottom: 30px;
   padding: 20px;
   width: 100%;
-  max-width: 480px;
+  max-width: 1024px;
 }
 
 .tutordiv p {
@@ -440,7 +410,7 @@ body {
 }
 
 /* Make the layout responsive */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .tutordiv {
     width: 100%;
   }
