@@ -17,7 +17,9 @@ router.get('', async (req, res) => {
         description: "Simple Site created with NodeJs, Express & MongoDb."
       }
   
-      const data = await Tutor.find().sort({ tag: 1, rating: -1, id: 1 });
+      const tags = ['buet', 'du', 'medical', 'cadet'];
+      const data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
+
   
       res.render('index', { 
         locals,
@@ -46,7 +48,8 @@ router.get('/filter-tutors', async (req, res) => {
 
     let data;
     if (req_tag === 'all') {
-      data = await Tutor.find().sort({ tag: 1, rating: -1, id: 1 });
+      const tags = ['buet', 'du', 'medical', 'cadet'];
+      const data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
     } else {
       data = await Tutor.find({ tag: req_tag }).sort({ rating: -1, id: 1 });
     }
