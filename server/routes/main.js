@@ -68,6 +68,44 @@ router.get('/filter-tutors', async (req, res) => {
 
 
 /**
+ * GET /search-tutors
+ * Route to search tutors by name, preferred area, institution, department, college, or expertise
+ */
+router.get('/search-tutors', async (req, res) => {
+  try {
+    const locals = {
+      title: 'Search Results',
+      description: 'Tutors matching your search criteria'
+    };
+
+    const searchQuery = req.query.query;
+    const searchRegex = new RegExp(searchQuery, 'i'); // Case-insensitive search
+
+    // Search for tutors matching the query in multiple fields
+    const data = await Tutor.find({
+      $or: [
+        { name: searchRegex },
+        { pref: searchRegex },
+        { institution: searchRegex },
+        { dept: searchRegex },
+        { college: searchRegex },
+        { expertise: searchRegex }
+      ]
+    }).sort({ rating: -1, id: 1 });
+
+    res.render('index', {
+      locals,
+      data,
+      currentRoute: '/search-tutors'
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+/**
  * GET /
  * REG Tutors
 */
