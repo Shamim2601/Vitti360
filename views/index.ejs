@@ -1,77 +1,76 @@
 <div class="author">
-  <p class="author__body"><strong><i>BUET | DU | Medical | Cadet</i></strong></p>
+  <h4><strong><i>BUET | DU | Medical | Cadet</i></strong></h4>
 </div>
 
 
-<section class="articles">
-  <h4 class="articles__heading">
-    <strong>Qualified Tutors</strong>
-    <form action="/filter-tutors" method="GET" style="display: flex;">
-      <span style="margin-right: 10px;">
-        <select name="tag" id="tagFilter" style="width: 250px; height: 64px">
-          <option value="all">All</option>
-          <option value="buet">BUET</option>
-          <option value="du">DU</option>
-          <option value="medical">Medical</option>
-          <option value="cadet">Cadet</option>
-          <option value="other">Other</option>
-        </select>
-      </span>
-      <input type="submit" value="Filter" style="width: 100px; height: 64px;">
-    </form>
+<strong>Qualified Tutors</strong>
+<form action="/filter-tutors" method="GET" style="display: flex;">
+  <span style="margin-right: 10px;">
+    <select name="tag" id="tagFilter" style="width: 250px; height: 64px;">
+      <option value="all">All</option>
+      <option value="buet">BUET</option>
+      <option value="du">DU</option>
+      <option value="medical">Medical</option>
+      <option value="cadet">Cadet</option>
+      <option value="other">Other</option>
+    </select>
+  </span>
+  <input type="submit" value="Filter" style="width: 100px; height: 64px;">
+</form>
 
-    <form action="/search-tutors" method="GET" style="display: flex; margin-top: 20px;">
-      <input type="text" name="query" placeholder="Search tutors..." style="width: 250px; height: 64px; margin-right: 10px;">
-      <input type="submit" value="Search" style="width: 100px; height: 64px;">
-    </form>
-    
-  </h4>
+<form action="/search-tutors" method="GET" style="display: flex;">
+  <input type="text" name="query" placeholder="Search tutors..."
+    style="width: 250px; height: 40px; margin-right: 10px;">
+  <input type="submit" value="Search" style="width: 100px; height: 40px;">
+</form>
 
-  <div class="main">
-    <% data.forEach(tutor=> { %>
-      <div class="tutordiv">
-        <h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">
-          <span style="color: blueviolet; font-size: 1em;">
-            t<%= tutor.id %>
-          </span> |
-          <span style="color: red; font-size: 1em;">
-            <%= tutor.tag %>
-          </span>
-        </h3>
-        <hr>
-        <p><strong>Name:</strong>
-          <%= tutor.name %>
-        </p>
-        <p><strong>Institution:</strong>
-          <%= tutor.institution %>
-        </p>
-        <p><strong>Department:</strong>
-          <%= tutor.dept %>
-        </p>
-        <p><strong>HSC Batch:</strong>
-          <%= tutor.hsc %>
-        </p>
-        <p><strong>Background:</strong>
-          <%= tutor.background %>
-        </p>
-        <p><strong>College:</strong>
-          <%= tutor.college %>
-        </p>
-        <p><strong>Expertise:</strong>
-          <%= tutor.expertise %>
-        </p>
-        <p><strong>Mode:</strong>
-          <%= tutor.mode %>
-        </p>
-        <p><strong>Pref. Area:</strong>
-          <%= tutor.pref %>
-        </p>
 
-        <a href="https://wa.me/+8801765749339?text=Hello%2C%0AWant%20to%20know%20more%20about%20Tutor%20%20t<%= tutor.id %>%20%3A%20<%= tutor.name %>%20%3A%20<%= tutor.tag %>" target="_blank" class="button button2"><strong>Get Tutor</strong></a>
+<div class="main">
+  <% data.forEach(tutor=> { %>
+    <div class="tutordiv">
+      <h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">
+        <span style="color: blueviolet; font-size: 1em;">
+          t<%= tutor.id %>
+        </span> |
+        <span style="color: red; font-size: 1em;">
+          <%= tutor.tag %>
+        </span>
+      </h3>
+      <hr>
+      <p><strong>Name:</strong>
+        <%= tutor.name %>
+      </p>
+      <p><strong>Institution:</strong>
+        <%= tutor.institution %>
+      </p>
+      <p><strong>Department:</strong>
+        <%= tutor.dept %>
+      </p>
+      <p><strong>HSC Batch:</strong>
+        <%= tutor.hsc %>
+      </p>
+      <p><strong>Background:</strong>
+        <%= tutor.background %>
+      </p>
+      <p><strong>College:</strong>
+        <%= tutor.college %>
+      </p>
+      <p><strong>Expertise:</strong>
+        <%= tutor.expertise %>
+      </p>
+      <p><strong>Mode:</strong>
+        <%= tutor.mode %>
+      </p>
+      <p><strong>Pref. Area:</strong>
+        <%= tutor.pref %>
+      </p>
 
-      </div>
+      <a href="https://wa.me/+8801765749339?text=Hello%2C%0AWant%20to%20know%20more%20about%20Tutor%20%20t<%= tutor.id %>%20%3A%20<%= tutor.name %>%20%3A%20<%= tutor.tag %>"
+        target="_blank" class="button button2"><strong>Get Tutor</strong></a>
+
+    </div>
     <% }) %>
-  </div>
+</div>
 
 
 </section>

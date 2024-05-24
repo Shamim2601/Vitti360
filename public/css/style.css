@@ -13,12 +13,18 @@
 }
 
 body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  margin: 0; /* Reset margin */
+  min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
   font-family: 'Poppins', sans-serif;
-  color: var(--black);
   font-size: var(--font-size-base);
-  background-color: #FAF5EE;
-  background-image: url("/img/img-noise-361x370.png");
-  margin: 0;
 }
 
 a { color: var(--black); }
@@ -57,7 +63,7 @@ textarea {
   border: none;
   border-radius: 5px;
   color: white; 
-  padding: 16px 32px;
+  font-size: 16px;
   text-decoration: none;
   margin: 4px 2px; 
   cursor: pointer;
@@ -74,30 +80,6 @@ textarea {
   padding: 10px 16px;
   background-color: var(--red);
 }
-
-
-.student_btn {
-  display: block;
-  padding: 10px 20px;
-  /* background-color: #4CAF50; */
-  color: blue;
-  text-align: center;
-  font-size: 26px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.student_btn:hover {
-  background-color: #45a049;
-}
-
-.student_btn:active {
-  background-color: #398439;
-}
-
 
 .button {
   background-color: #04AA6D; /* Green */
@@ -139,14 +121,14 @@ textarea {
 
 /* Layout */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   padding: 0 10px;
 }
 
 .main {
   margin-top: 10px;
-  max-height: 896px;
+  max-width: 100%; /* Set the maximum width to 100% */
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -173,7 +155,7 @@ textarea {
 .header__logo {
   color: blueviolet;
   font-weight: 800;
-  font-size: 36px;
+  font-size: 24px;
   text-decoration: none;
   grid-area: logo;
 }
@@ -190,30 +172,6 @@ textarea {
 
 .header__logo, .header__nav, .header__button {
   width: 100%;
-}
-
-.header__button {
-  display: flex;
-  justify-content: end;
-  grid-area: button;
-}
-
-.header__button button {
-  display: flex;
-  gap: 0.3rem;
-  align-items: center;
-  border: 0;
-  padding: 6px 12px;
-  background: none;
-  border-radius: 10px;
-  border: 2px solid transparent;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--black);
-}
-
-.header__button button:hover {
-  border: 2px solid var(--black);
 }
 
 /* Header -> Navigation */
@@ -242,93 +200,6 @@ textarea {
 .author {
   padding: 10px 0;
   text-align: center;
-}
-
-.author__heading {
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.author__body {
-  font-size: 28px;
-  margin-top: 20px;
-}
-
-.author__text{
-  color: blue;
-  font-size: var(--font-size-md);
-  margin: 5px 0 40px 0;
-}
-
-
-/* Home Article List */
-.articles__heading {
-  font-weight: 400;
-}
-
-
-#studentLogin {
-  font-size: 32px;
-  color: #3ecb13; /* Choose your desired text color */
-  text-align: left;
-  margin-bottom: 20px; /* Adjust the margin bottom as needed */
-}
-
-
-.article-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.article-table th, .article-table td {
-  padding: 8px;
-  border: 1px solid #ddd;
-}
-
-.article-table th {
-  background-color: #f2f2f2;
-}
-
-.article-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.article-table tr:hover {
-  background-color: #ddd;
-}
-
-
-@media only screen and (min-width: 1024px) {
-  .article-ul li a {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .article-list__date {
-    text-align: right;
-  }
-}
-
-.article-ul li {
-  font-size: 24px;
-  cursor: pointer;
-  transition: filter 0.1s;
-}
-
-.article-ul li:not(:last-child) {
-  border-bottom: 1px solid var(--gray-light);
-}
-
-.article-ul li:hover {
-  filter: none;
-}
-
-.article-ul:hover li {
-  filter: blur(3px);
-}
-
-.article-ul:hover li:hover {
-  filter: none;
 }
 
 
@@ -406,19 +277,6 @@ body, h1, h2, p {
   font-family: Arial, sans-serif;
 }
 
-/* Body styles */
-body {
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
 /* Title styles */
 .title {
   font-size: 2em;
@@ -434,8 +292,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   padding: 20px;
-  width: 100%;
-  max-width: 1024px;
+  max-width: 100%; /* Changed from 1024px to 100% */
 }
 
 .tutordiv p {
@@ -450,6 +307,8 @@ body {
 /* Make the layout responsive */
 @media (max-width: 1024px) {
   .tutordiv {
-    width: 100%;
+    width: calc(100% - 20px); /* Adjusted width for padding */
+    margin-left: auto; /* Center the element */
+    margin-right: auto; /* Center the element */
   }
 }
