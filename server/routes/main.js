@@ -153,7 +153,7 @@ router.post('/reg-tutor', async (req, res) => {
 
       // Send custom email
       const subject = 'New Tutor Registration';
-      const text = `A new tutor has registered:\n\nName: ${req.body.name}\nTag: ${req.body.tag}\nInstitution: ${req.body.institution}\nDepartment: ${req.body.dept}\nHSC Batch: ${req.body.hsc}\nCollege: ${req.body.college}`;
+      const text = `A new tutor has registered:\n\nName: ${req.body.name}\nTag: ${req.body.tag}\nInstitution: ${req.body.institution}\nDepartment: ${req.body.dept}\nHSC Batch: ${req.body.hsc}\nCollege: ${req.body.college}\n\nGo to Admin Panel:\nhttps://qtutor.onrender.com/admin`;
       
       await sendMail('saimaneeti367@gmail.com', subject, text);
 
