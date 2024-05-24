@@ -63,9 +63,8 @@ textarea {
   border: none;
   border-radius: 5px;
   color: white; 
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: none;
-  margin: 4px 2px; 
   cursor: pointer;
 }
 
@@ -155,7 +154,7 @@ textarea {
 .header__logo {
   color: blueviolet;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 20px;
   text-decoration: none;
   grid-area: logo;
 }
