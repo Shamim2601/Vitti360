@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Tutor = require('../models/Tutor');
 const regTutor = require('../models/regTutor');
+const sendMail = require('../helpers/mailer');
 
 // Routes
 
@@ -111,6 +112,13 @@ router.post('/reg-tutor', async (req, res) => {
       });
 
       await regTutor.create(newregTutor);
+
+      // Send custom email
+      const subject = 'New Tutor Registration';
+      const text = `A new tutor has registered:\n\nName: ${req.body.name}\nTag: ${req.body.tag}\nInstitution: ${req.body.institution}\nDepartment: ${req.body.dept}\nHSC Batch: ${req.body.hsc}\nCollege: ${req.body.college}`;
+      
+      await sendMail('saimaneeti367@gmail.com', subject, text);
+
       res.redirect('/');
     } catch (error) {
       console.log(error);
