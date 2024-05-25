@@ -33,8 +33,8 @@
 <table class="admin-tutors">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>ID</th>
+      <th class="sticky-col">Name</th>
+      <th class="sticky-col">ID</th>
       <th>Tag</th>
       <th>Cont</th>
       <th>Inst</th>
@@ -52,10 +52,10 @@
   <tbody>
     <% data.forEach(tutor=> { %>
       <tr>
-        <td>
+        <td class="sticky-col">
           <%= tutor.name %>
         </td>
-        <td>
+        <td class="sticky-col">
           t<%= tutor.id %>
         </td>
         <td>

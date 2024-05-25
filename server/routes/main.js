@@ -50,7 +50,7 @@ router.get('/filter-tutors', async (req, res) => {
     let data;
     if (req_tag === 'all') {
       const tags = ['buet', 'du', 'medical', 'cadet'];
-      const data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
+      data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
     } else {
       data = await Tutor.find({ tag: req_tag }).sort({ rating: -1, id: 1 });
     }

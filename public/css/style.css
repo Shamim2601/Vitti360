@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap');
-
 :root {
   --black: #1c1c1c;
   --gray: #7E7E7E;
@@ -247,6 +245,18 @@ textarea {
 
 .admin-tutors td {
   vertical-align: top; /* Optional: Align text to the top of the cell */
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  background-color: #f2f2f2; /* Same as header background color */
+  z-index: 1;
+}
+
+.sticky-col + .sticky-col {
+  left: 100px; /* Adjust this value based on the width of the first sticky column */
 }
 
 
