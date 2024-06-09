@@ -14,7 +14,7 @@ router.get('', async (req, res) => {
     try {
       // console.log(req.query);
       const locals = {
-        title: "QTutor | Welcome",
+        title: "Vitti360 | Welcome",
         description: "Simple Site created with NodeJs, Express & MongoDb."
       }
   
@@ -112,7 +112,7 @@ router.get('/search-tutors', async (req, res) => {
 router.get('/reg-tutor', async (req, res) => {
   try {
     const locals = {
-      title: "QTutor | Welcome",
+      title: "Vitti360 | Welcome",
       description: "Simple Site created with NodeJs, Express & MongoDb."
     }
 
@@ -153,7 +153,7 @@ router.post('/reg-tutor', async (req, res) => {
 
       // Send custom email
       const subject = 'New Tutor Registration';
-      const text = `A new tutor has registered:\n\nName: ${req.body.name}\nTag: ${req.body.tag}\nInstitution: ${req.body.institution}\nDepartment: ${req.body.dept}\nHSC Batch: ${req.body.hsc}\nCollege: ${req.body.college}\n\nGo to Admin Panel:\nhttps://qtutor.onrender.com/admin`;
+      const text = `A new tutor has registered:\n\nName: ${req.body.name}\nTag: ${req.body.tag}\nInstitution: ${req.body.institution}\nDepartment: ${req.body.dept}\nHSC Batch: ${req.body.hsc}\nCollege: ${req.body.college}\nGo to Admin Panel:\nhttps://www.vitti360.xyz/admin`;
       
       await sendMail('saimaneeti367@gmail.com', subject, text);
 
