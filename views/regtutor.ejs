@@ -4,162 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutor Registration</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom CSS */
-        .admin-title {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            margin-bottom: 20px;
-        }
-        .form-container label {
-            font-weight: bold;
-        }
-        .form-container .btn {
-            width: 100%;
-        }
-    </style>
+    <link href="css/form-style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 </head>
-<body class="bg-light">
-
-<div class="container">
-    <div class="admin-title">
-        <h2>Register as Tutor</h2>
+<body>
+    <div class="main-w3layouts wrapper">
+        <h1>Register as Tutor</h1>
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form name="regTutorForm" id="regTutorForm" action="/reg-tutor" method="POST" onsubmit="return validateForm()">
+                    <input class="text" type="text" name="name" placeholder="Name" required="">
+                    <select class="text" name="tag" id="tag" required>
+                        <option value="" disabled selected>Tag</option>
+                        <option value="buet">BUET</option>
+                        <option value="du">DU</option>
+                        <option value="medical">Medical</option>
+                        <option value="cadet">Cadet</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input class="text" type="text" name="institution" placeholder="Institution" required="">
+                    <input class="text" type="text" name="dept" placeholder="Department" required="">
+                    <input class="text" type="text" name="hsc" placeholder="HSC Batch" required="">
+                    <select class="text" name="background" id="background" required>
+                        <option value="" disabled selected>Background</option>
+                        <option value="BV">Bangla Version</option>
+                        <option value="EV">English Version</option>
+                        <option value="EM">English Medium</option>
+                    </select>
+                    <input class="text" type="text" name="college" placeholder="College" required="">
+                    <input class="text" type="text" name="expertise" placeholder="Expertise" maxlength="25" required="">
+                    <select class="text" name="mode" id="mode" required>
+                        <option value="" disabled selected>Mode</option>
+                        <option value="Offline">Offline</option>
+                        <option value="Online">Online</option>
+                        <option value="Offline/Online">Both</option>
+                    </select>
+                    <input class="text" type="text" name="pref" placeholder="Preferred Area" maxlength="25" required="">
+                    <input class="text" type="text" name="phone" placeholder="Phone" required="">
+                    <input class="text" type="text" name="fb" placeholder="FB Profile Link" required="">
+                    <input type="submit" value="Submit">
+                </form>
+                <p>Thanks for your interest!<br>We'll review your submission.<br>Your info might be shared for selection and contact.</p>
+            </div>
+        </div>
+        <ul class="colorlib-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function validateForm() {
+            var phoneInput = document.forms["regTutorForm"]["phone"].value;
+            if (!/^\d{11}$/.test(phoneInput)) {
+                alert("Please enter an 11-digit numeric phone number");
+                return false;
+            }
 
-    <div class="form-container">
-        <form name="regTutorForm" id="regTutorForm" action="/reg-tutor" method="POST" onsubmit="return validateForm()">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" placeholder="Abdullah" name="name" required>
-            </div>
+            var expertiseInput = document.forms["regTutorForm"]["expertise"].value;
+            var prefInput = document.forms["regTutorForm"]["pref"].value;
+            var insInput = document.forms["regTutorForm"]["institution"].value;
+            var collegeInput = document.forms["regTutorForm"]["college"].value;
+            if (expertiseInput.length > 25) {
+                alert("Expertise field should not exceed 25 characters");
+                return false;
+            }
+            if (prefInput.length > 25) {
+                alert("Preferred Area field should not exceed 25 characters");
+                return false;
+            }
+            if (insInput.length > 25) {
+                alert("Institution field should not exceed 25 characters");
+                return false;
+            }
+            if (collegeInput.length > 25) {
+                alert("College field should not exceed 25 characters");
+                return false;
+            }
 
-            <div class="form-group">
-                <label for="tag">Tag</label>
-                <select class="form-control" name="tag" id="tag" required>
-                    <option value="buet">BUET</option>
-                    <option value="du">DU</option>
-                    <option value="medical">Medical</option>
-                    <option value="cadet">Cadet</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="institution">Institution</label>
-                <input type="text" class="form-control" placeholder="BUET" name="institution" required>
-            </div>
-
-            <div class="form-group">
-                <label for="dept">Department</label>
-                <input type="text" class="form-control" placeholder="CSE" name="dept" required>
-            </div>
-
-            <div class="form-group">
-                <label for="hsc">HSC Batch</label>
-                <input type="text" class="form-control" placeholder="2018" name="hsc" required>
-            </div>
-
-            <div class="form-group">
-                <label for="background">Background</label>
-                <select class="form-control" name="background" id="background" required>
-                    <option value="BV">Bangla Version</option>
-                    <option value="EV">English Version</option>
-                    <option value="EM">English Medium</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="college">College</label>
-                <input type="text" class="form-control" placeholder="NDC" name="college" required>
-            </div>
-
-            <div class="form-group">
-                <label for="expertise">Expertise</label>
-                <input type="text" class="form-control" placeholder="HSC Science, Programming" name="expertise" maxlength="25" required>
-            </div>
-
-            <div class="form-group">
-                <label for="mode">Mode</label>
-                <select class="form-control" name="mode" id="mode" required>
-                    <option value="Offline">Offline</option>
-                    <option value="Online">Online</option>
-                    <option value="Offline/Online">Both</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="pref">Preferred Area</label>
-                <input type="text" class="form-control" placeholder="Azimpur, Demra" name="pref" maxlength="25" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" placeholder="01234567890" name="phone" required>
-            </div>
-
-            <div class="form-group">
-                <label for="fb">FB Profile Link</label>
-                <input type="text" class="form-control" placeholder="https://www.facebook.com/samamun60" name="fb" required>
-            </div>
-
-            <p>Thanks for your interest in QTutor!<br>We'll review your submission.<br>
-                Your info might be shared for selection and contact.</p>
-            <input type="submit" value="Submit" class="btn btn-primary">
-        </form>
-    </div>
-</div>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-    function validateForm() {
-        // Validate phone number
-        var phoneInput = document.forms["regTutorForm"]["phone"].value;
-        if (!/^\d{11}$/.test(phoneInput)) {
-            alert("Please enter an 11-digit numeric phone number");
-            return false;
+            return true;
         }
-
-        // Validate expertise and pref fields for max length
-        var expertiseInput = document.forms["regTutorForm"]["expertise"].value;
-        var prefInput = document.forms["regTutorForm"]["pref"].value;
-        var insInput = document.forms["regTutorForm"]["institution"].value;
-        var collegeInput = document.forms["regTutorForm"]["college"].value;
-        if (expertiseInput.length > 25) {
-            alert("Expertise field should not exceed 25 characters");
-            return false;
-        }
-        if (prefInput.length > 25) {
-            alert("Preferred Area field should not exceed 25 characters");
-            return false;
-        }
-        if (insInput.length > 25) {
-            alert("Institution field should not exceed 25 characters");
-            return false;
-        }
-        if (collegeInput.length > 25) {
-            alert("College field should not exceed 25 characters");
-            return false;
-        }
-
-        return true;
-    }
-</script>
-
+    </script>
 </body>
 </html>
