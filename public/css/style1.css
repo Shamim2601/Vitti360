@@ -1,0 +1,323 @@
+:root {
+  --black: #1c1c1c;
+  --gray: #7E7E7E;
+  --gray-light: #E4E4E4;
+  --red: #b30000;
+  --font-size-base: 1rem;
+  --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+  --border-radius: 10px;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  margin: 0; /* Reset margin */
+  min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--font-size-base);
+}
+
+a { color: var(--black); }
+h1 { font-size: var(--font-size-xl); }
+h2 { font-size: var(--font-size-lg); }
+h3 { font-size: var(--font-size-md); }
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: var(--black);
+  border: none;
+  color: white; 
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px; 
+  cursor: pointer;
+}
+
+.btn-home {
+  background-color: blue;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  color: white; 
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-admin {
+  color: blue;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-delete {
+  padding: 10px 16px;
+  background-color: var(--red);
+}
+
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  height: 26px;
+  font-size: 16px;
+  padding: 5px;
+  margin-left: 35%;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+
+/* Layout */
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.main {
+  margin-top: 10px;
+  max-width: 100%; /* Set the maximum width to 100% */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Main Header */
+.header {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "logo button"
+  "menu menu";
+  padding-top: 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 
+    "logo menu button";
+  }
+}
+
+.header__logo {
+  color: blueviolet;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+  grid-area: logo;
+}
+
+.header__logo:hover {
+  text-decoration: underline;
+}
+
+.header__nav {
+  justify-content: center;
+  display: flex;
+  grid-area: menu;
+}
+
+.header__logo, .header__nav, .header__button {
+  width: 100%;
+}
+
+/* Header -> Navigation */
+.header__nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  font-weight: 600;
+  padding: 0;
+}
+
+.header__nav ul a {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.header__nav ul a.active {
+  color: #7E7E7E;
+}
+
+.header__nav ul a:hover {
+  text-decoration: underline;
+}
+
+/* Author - HomePage */
+.author {
+  padding: 10px 0;
+  text-align: center;
+}
+
+
+.article {
+  white-space: pre-wrap;
+}
+
+
+/* Footer */
+.footer {
+  padding-top: 5px;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+
+/* Dashboard Admin */
+.admin-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-students {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-tutors {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-tutors th, .admin-tutors td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  word-wrap: break-word; /* This helps with wrapping long words */
+  text-align: center; /* Center-align text in each cell */
+  white-space: normal; /* Ensures text wraps within the cell */
+}
+
+.admin-tutors th {
+  background-color: #f2f2f2; /* Optional: Adding a background color to the header */
+  text-align: left;
+}
+
+.admin-tutors td {
+  vertical-align: top; /* Optional: Align text to the top of the cell */
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  background-color: #f2f2f2; /* Same as header background color */
+  z-index: 1;
+}
+
+.sticky-col + .sticky-col {
+  left: 100px; /* Adjust this value based on the width of the first sticky column */
+}
+
+
+.admin-students th, .admin-students td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.admin-students th {
+  background-color: #f2f2f2;
+}
+
+.admin-students tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.admin-students tr:hover {
+  background-color: #ddd;
+}
+
+
+/* Reset some default styles */
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Title styles */
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #4CAF50;
+}
+
+/* Tutor card styles */
+.tutordiv {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  padding: 20px;
+  max-width: 100%; /* Changed from 1024px to 100% */
+}
+
+.tutordiv p {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.tutordiv p strong {
+  color: #555;
+}
+
+/* Make the layout responsive */
+@media (max-width: 1024px) {
+  .tutordiv {
+    width: calc(100% - 20px); /* Adjusted width for padding */
+    margin-left: auto; /* Center the element */
+    margin-right: auto; /* Center the element */
+  }
+}
