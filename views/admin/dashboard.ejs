@@ -1,121 +1,101 @@
-<style>
-  .hide {
-    display: none;
-  }
-</style>
+<div class="admin-controls">
+  <a class="btn-admin" id="reg-admin-btn">
+    <h3>New Admin</h3>
+  </a>
+  <a href="/student-list" class="btn-admin">
+    <h3>Manage Tutions</h3>
+  </a>
+  
+  <a href="/reg-list" class="btn-admin">
+    <h3>Manage Tutor Registration</h3>
+  </a>
 
-<div>
-  <a class="btn-admin"><h3 id="registerHeading">Register New Admin</h3></a>
-  <form id="registerForm" action="/register" method="POST" class="hide">
+  <form id="registerForm" action="/register" method="POST" class="reg-admin-form">
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="username">
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password">
-    <div class="btn-container">
-      <input type="submit" value="Register" class="btn">
-    </div>
+    <input type="submit" value="Register" class="btn">
   </form>
 </div>
 
-<a href="/student-list" class="btn-admin">
-  <h3>View/Add/Update Tutions</h3>
-</a>
-
-<a href="/reg-list" class="btn-admin">
-  <h3>View/Add/Update Tutor Registration</h3>
-</a>
-
-<div class="admin-title">
+<div class="admin-tutorsdiv">
   <h2>Tutors</h2>
-  <a href="/add-tutor" class="button">+ Add New</a>
-</div>
+  <a href="/add-tutor" class="btn-add">+ Add New</a>
 
-<table class="admin-tutors">
-  <thead>
-    <tr>
-      <th class="sticky-col">Name</th>
-      <th class="sticky-col">ID</th>
-      <th>Tag</th>
-      <th>Cont</th>
-      <th>Inst</th>
-      <th>Dept</th>
-      <th>HSC</th>
-      <th>Back</th>
-      <th>College</th>
-      <th>Exp</th>
-      <th>Mode</th>
-      <th>Pref</th>
-      <th>Rate</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% data.forEach(tutor=> { %>
+  <table class="admin-tutors">
+    <thead>
       <tr>
-        <td class="sticky-col">
-          <%= tutor.name %>
-        </td>
-        <td class="sticky-col">
-          t<%= tutor.id %>
-        </td>
-        <td>
-          <%= tutor.tag %>
-        </td>
-        <td>
-          <a href="<%= tutor.fb %>" style="text-decoration: none;">ⓕ</a>
-          <a href="tel:<%= tutor.phone %>" style="text-decoration: none;">📞</a> 
-        </td>
-        <td>
-          <%= tutor.institution %>
-        </td>
-        <td>
-          <%= tutor.dept %>
-        </td>
-        <td>
-          <%= tutor.hsc %>
-        </td>
-        <td>
-          <%= tutor.background %>
-        </td>
-        <td>
-          <%= tutor.college %>
-        </td>
-        <td>
-          <%= tutor.expertise %>
-        </td>
-        <td>
-          <%= tutor.mode %>
-        </td>
-        <td>
-          <%= tutor.pref %>
-        </td>
-        <td>
-          <%= tutor.rating %>
-        </td>
-        <td>
-          <div style="display: flex; gap: 5px;">
-            <a href="/inc_rating/<%= tutor._id %>" class="" style="text-decoration: none;">⬆️</a>
-            <a href="/dec_rating/<%= tutor._id %>" class="" style="text-decoration: none;">⬇️</a>
-          </div>
-          <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Del" class="btn-delete btn" style="display: block; margin-top: 5px;">
-          </form>
-        </td>     
+        <th>Name</th>
+        <th>ID</th>
+        <th>Tag</th>
+        <th>Cont</th>
+        <th>Inst</th>
+        <th>Dept</th>
+        <th>HSC</th>
+        <th>Back</th>
+        <th>College</th>
+        <th>Exp</th>
+        <th>Mode</th>
+        <th>Pref</th>
+        <th>Rate</th>
+        <th>Action</th>
       </tr>
-      <% }) %>
-  </tbody>
-</table>
-
-
-<script>
-  // Get the heading element
-  const registerHeading = document.getElementById('registerHeading');
-  // Get the form element
-  const registerForm = document.getElementById('registerForm');
-
-  // Add click event listener to the heading element
-  registerHeading.addEventListener('click', function () {
-    // Toggle the 'hide' class on the form element
-    registerForm.classList.toggle('hide');
-  });
-</script>
+    </thead>
+    <tbody>
+      <% data.forEach(tutor=> { %>
+        <tr>
+          <td>
+            <%= tutor.name %>
+          </td>
+          <td>
+            t<%= tutor.id %>
+          </td>
+          <td>
+            <%= tutor.tag %>
+          </td>
+          <td>
+            <a href="<%= tutor.fb %>" class="btn-icon">ⓕ</a>
+            <a href="tel:<%= tutor.phone %>" class="btn-icon">📞</a> 
+          </td>
+          <td>
+            <%= tutor.institution %>
+          </td>
+          <td>
+            <%= tutor.dept %>
+          </td>
+          <td>
+            <%= tutor.hsc %>
+          </td>
+          <td>
+            <%= tutor.background %>
+          </td>
+          <td>
+            <%= tutor.college %>
+          </td>
+          <td>
+            <%= tutor.expertise %>
+          </td>
+          <td>
+            <%= tutor.mode %>
+          </td>
+          <td>
+            <%= tutor.pref %>
+          </td>
+          <td>
+            <%= tutor.rating %>
+          </td>
+          <td>
+            <div style="display: flex; gap: 5px;">
+              <a href="/inc_rating/<%= tutor._id %>" class="btn-icon" >⬆️</a>
+              <a href="/dec_rating/<%= tutor._id %>" class="btn-icon">⬇️</a>
+            </div>
+            <form action="/delete-tutor/<%= tutor._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Del" class="btn-delete btn">
+            </form>
+          </td>     
+        </tr>
+        <% }) %>
+    </tbody>
+  </table>
+</div>

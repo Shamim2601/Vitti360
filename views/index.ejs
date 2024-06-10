@@ -1,12 +1,13 @@
-<div class="author">
-  <h4><strong><i>BUET | DU | Medical | Cadet</i></strong></h4>
+<div class="tag-heading">
+  <p class="tagline">BUET | DU | Medical | Cadet</p>
 </div>
 
 
-<strong>Find Qualified Tutors</strong>
-<form action="/filter-tutors" method="GET" style="display: flex;">
-  <span style="margin-right: 10px;">
-    <select name="tag" id="tagFilter" style="width: 250px; height: 64px;">
+<div class="search-filter-div">
+  <strong>Find Qualified Tutors</strong>
+
+  <form action="/filter-tutors" method="GET" class="filter-form">
+    <select name="tag" id="tagFilter">
       <option value="all">All</option>
       <option value="buet">BUET</option>
       <option value="du">DU</option>
@@ -14,25 +15,24 @@
       <option value="cadet">Cadet</option>
       <option value="other">Other</option>
     </select>
-  </span>
-  <input type="submit" value="Filter" style="width: 100px; height: 64px;">
-</form>
+    <span><input type="submit" value="Filter"></span>
+  </form>
 
-<form action="/search-tutors" method="GET" style="display: flex;">
-  <input type="text" name="query" placeholder="Search tutors..."
-    style="width: 250px; height: 40px; margin-right: 10px;">
-  <input type="submit" value="Search" style="width: 100px; height: 40px;">
-</form>
+  <form action="/search-tutors" method="GET" class="search-form">
+    <input type="text" name="query" placeholder="Search tutors...">
+    <input type="submit" value="Search">
+  </form>
+</div>
 
 
-<div class="main">
+<div class="main-tutors">
   <% data.forEach(tutor=> { %>
     <div class="tutordiv">
-      <h3 style="text-align: center; margin-top: 5px; margin-bottom: 5px;">
-        <span style="color: blueviolet; font-size: 1em;">
+      <h3>
+        <span>
           t<%= tutor.id %>
         </span> |
-        <span style="color: red; font-size: 1em;">
+        <span>
           <%= tutor.tag %>
         </span>
       </h3>

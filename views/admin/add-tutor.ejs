@@ -1,63 +1,65 @@
-<a href="/dashboard">&larr; Back</a>
-<div class="admin-title">
-  <h2>Add New Tutor</h2>
+<div class="add-tutordiv" style="margin: 100px;">
+  <a href="/dashboard">&larr; Back</a>
+  <div class="admin-title">
+    <h2>Add New Tutor</h2>
+  </div>
+
+  <form action="/add-tutor" method="POST">
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Abdullah" name="name">
+
+    <label for="tag"><b>Tag</b></label>
+    <select name="tag" id="tag">
+      <option value="buet">BUET</option>
+      <option value="du">DU</option>
+      <option value="medical">Medical</option>
+      <option value="cadet">Cadet</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="institution"><b>Institution</b></label>
+    <input type="text" placeholder="BUET" name="institution">
+
+    <label for="dept"><b>Department</b></label>
+    <input type="text" placeholder="CSE" name="dept">
+
+    <label for="hsc"><b>HSC Batch</b></label>
+    <input type="text" placeholder="2018" name="hsc">
+
+    <label for="background"><b>Background</b></label>
+    <select name="background" id="background">
+      <option value="BV">Bangla Version</option>
+      <option value="EV">English Version</option>
+      <option value="EM">English Medium</option>
+    </select>
+
+    <label for="college"><b>College</b></label>
+    <input type="text" placeholder="NDC" name="college">
+
+    <label for="expertise"><b>Expertise</b></label>
+    <input type="text" placeholder="HSC Science, Programming" name="expertise">
+
+    <label for="mode"><b>Mode</b></label>
+    <select name="mode" id="mode">
+      <option value="Offline">Offline</option>
+      <option value="Online">Online</option>
+      <option value="Offline/Online">Both</option>
+    </select>
+
+    <label for="pref"><b>Preferred Area</b></label>
+    <input type="text" placeholder="Azimpur, Demra" name="pref">
+
+    <label for="phone"><b>Phone</b></label>
+    <input type="text" placeholder="01234567890" name="phone">
+
+    <label for="fb"><b>FB Profile Link</b></label>
+    <input type="text" placeholder="https://www.facebook.com/samamun60" name="fb">
+
+    <label for="rating"><b>Rating</b></label>
+    <input type="number" placeholder="9" name="rating">
+
+    <input type="submit" value="Add" class="btn">
+
+  </form>
 </div>
-
-<form action="/add-tutor" method="POST">
-
-  <label for="name"><b>Name</b></label>
-  <input type="text" placeholder="Abdullah" name="name">
-
-  <label for="tag"><b>Tag</b></label>
-  <select name="tag" id="tag">
-    <option value="buet">BUET</option>
-    <option value="du">DU</option>
-    <option value="medical">Medical</option>
-    <option value="cadet">Cadet</option>
-    <option value="other">Other</option>
-  </select>
-
-  <label for="institution"><b>Institution</b></label>
-  <input type="text" placeholder="BUET" name="institution">
-
-  <label for="dept"><b>Department</b></label>
-  <input type="text" placeholder="CSE" name="dept">
-
-  <label for="hsc"><b>HSC Batch</b></label>
-  <input type="text" placeholder="2018" name="hsc">
-
-  <label for="background"><b>Background</b></label>
-  <select name="background" id="background">
-    <option value="BV">Bangla Version</option>
-    <option value="EV">English Version</option>
-    <option value="EM">English Medium</option>
-  </select>
-
-  <label for="college"><b>College</b></label>
-  <input type="text" placeholder="NDC" name="college">
-
-  <label for="expertise"><b>Expertise</b></label>
-  <input type="text" placeholder="HSC Science, Programming" name="expertise">
-
-  <label for="mode"><b>Mode</b></label>
-  <select name="mode" id="mode">
-    <option value="Offline">Offline</option>
-    <option value="Online">Online</option>
-    <option value="Offline/Online">Both</option>
-  </select>
-
-  <label for="pref"><b>Preferred Area</b></label>
-  <input type="text" placeholder="Azimpur, Demra" name="pref">
-
-  <label for="phone"><b>Phone</b></label>
-  <input type="text" placeholder="01234567890" name="phone">
-
-  <label for="fb"><b>FB Profile Link</b></label>
-  <input type="text" placeholder="https://www.facebook.com/samamun60" name="fb">
-
-  <label for="rating"><b>Rating</b></label>
-  <input type="number" placeholder="9" name="rating">
-
-  <input type="submit" value="Add" class="btn">
-
-</form>
