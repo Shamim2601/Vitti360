@@ -1,69 +1,67 @@
 <div class="admin-tutorsdiv">
-    <h3>Tutor Registrations</h3>
-    <a href="/add-tutor" class="button">+ Add New Tutor</a>
-  </div>
-  
+  <h2>Tutor Registrations</h2>
   <table class="admin-tutors">
     <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tag</th>
+        <th>Cont</th>
+        <th>Inst</th>
+        <th>Dept</th>
+        <th>HSC</th>
+        <th>Back</th>
+        <th>College</th>
+        <th>Exp</th>
+        <th>Mode</th>
+        <th>Pref</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(regtutor=> { %>
         <tr>
-          <th>Name</th>
-          <th>Tag</th>
-          <th>Cont</th>
-          <th>Inst</th>
-          <th>Dept</th>
-          <th>HSC</th>
-          <th>Back</th>
-          <th>College</th>
-          <th>Exp</th>
-          <th>Mode</th>
-          <th>Pref</th>
-          <th>Action</th>
+          <td>
+            <%= regtutor.name %>
+          </td>
+          <td>
+            <%= regtutor.tag %>
+          </td>
+          <td>
+            <a href="<%= regtutor.fb %>" style="text-decoration: none;">ⓕ</a>
+            <a href="tel:<%= regtutor.phone %>" style="text-decoration: none;">📞</a>
+          </td>
+          <td>
+            <%= regtutor.institution %>
+          </td>
+          <td>
+            <%= regtutor.dept %>
+          </td>
+          <td>
+            <%= regtutor.hsc %>
+          </td>
+          <td>
+            <%= regtutor.background %>
+          </td>
+          <td>
+            <%= regtutor.college %>
+          </td>
+          <td>
+            <%= regtutor.expertise %>
+          </td>
+          <td>
+            <%= regtutor.mode %>
+          </td>
+          <td>
+            <%= regtutor.pref %>
+          </td>
+          <td>
+            <a href="/approve-reg/<%= regtutor._id %>" class="btn-delete btn" style="display: block;">Add</a>
+            <form action="/delete-regtutor/<%= regtutor._id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Del" class="btn-delete btn" style="display: block; margin-top: 5px;">
+            </form>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% data.forEach(regtutor=> { %>
-          <tr>
-            <td>
-              <%= regtutor.name %>
-            </td>
-            <td>
-              <%= regtutor.tag %>
-            </td>
-            <td>
-              <a href="<%= regtutor.fb %>" style="text-decoration: none;">ⓕ</a>
-              <a href="tel:<%= regtutor.phone %>" style="text-decoration: none;">📞</a> 
-            </td>
-            <td>
-              <%= regtutor.institution %>
-            </td>
-            <td>
-              <%= regtutor.dept %>
-            </td>
-            <td>
-              <%= regtutor.hsc %>
-            </td>
-            <td>
-              <%= regtutor.background %>
-            </td>
-            <td>
-              <%= regtutor.college %>
-            </td>
-            <td>
-              <%= regtutor.expertise %>
-            </td>
-            <td>
-              <%= regtutor.mode %>
-            </td>
-            <td>
-              <%= regtutor.pref %>
-            </td>
-            <td>
-              <a href="/approve-reg/<%= regtutor._id %>" class="btn-delete btn" style="display: block;">Add</a>
-              <form action="/delete-regtutor/<%= regtutor._id %>?_method=DELETE" method="POST">
-                <input type="submit" value="Del" class="btn-delete btn" style="display: block; margin-top: 5px;">
-              </form>
-            </td>     
-          </tr>
-          <% }) %>
-      </tbody>
-      </table>
+        <% }) %>
+    </tbody>
+  </table>
+</div>
