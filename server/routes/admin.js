@@ -187,6 +187,7 @@ router.get('/add-tutor', authMiddleware, async (req, res) => {
           mode: req.body.mode,
           pref: req.body.pref,
           phone: req.body.phone,
+          email: req.body.email,
           fb: req.body.fb,
           rating: req.body.rating,
         });
@@ -306,6 +307,7 @@ router.get('/approve-reg/:id', authMiddleware, async (req, res) => {
       mode: regtutor.mode,
       pref: regtutor.pref,
       phone: regtutor.phone,
+      email: regtutor.email,
       fb: regtutor.fb,
       rating: 5
     });

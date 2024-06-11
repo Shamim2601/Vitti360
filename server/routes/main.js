@@ -146,6 +146,7 @@ router.post('/reg-tutor', async (req, res) => {
         mode: req.body.mode,
         pref: req.body.pref,
         phone: req.body.phone,
+        email: req.body.email,
         fb: req.body.fb,
       });
 
