@@ -1,10 +1,10 @@
 <div class="ai-qa-container">
-    <h2>Give me Questions</h2>
+    <h2>Ask Me Questions</h2>
 
     <!-- Form for uploading image -->
     <form action="/ai-image-query" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="imageInput"><b>Upload Image</b></label>
+            <label for="imageInput"><b>Upload Image of Question</b></label>
             <input type="file" name="image" id="imageInput" accept="image/*">
         </div>
         <input type="submit" value="Submit Image" class="btn-submit">
@@ -13,10 +13,10 @@
     <!-- Form for submitting text query -->
     <form action="/ai-text-query" method="POST">
         <div class="form-group">
-            <label for="textQuery"><b>Text Query</b></label>
+            <label for="textQuery"><b>Write your Question</b></label>
             <textarea name="query" id="textQuery" rows="10" placeholder="Enter your query here..."></textarea>
         </div>
-        <input type="submit" value="Submit Text" class="btn-submit">
+        <input type="submit" value="Ask Now" class="btn-submit">
     </form>
 
     <div class="output">

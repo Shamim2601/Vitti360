@@ -223,4 +223,27 @@ router.post('/ai-text-query', async (req, res) => {
   }
 });
 
+
+/**
+ * GET /
+ * Job Prep
+*/
+router.get('/job-prep', async (req, res) => {
+  try {
+    const locals = {
+      title: "Your Job Preparation Assistant",
+      description: "Simple Site created with NodeJs, Express & MongoDb."
+    }
+
+    res.render('main/job-prep', { 
+      locals,
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+
+});
+
+
 module.exports = router;
