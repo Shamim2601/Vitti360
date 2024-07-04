@@ -14,7 +14,7 @@
     <form action="/ai-text-query" method="POST">
         <div class="form-group">
             <label for="textQuery"><b>Write your Question</b></label>
-            <textarea name="query" id="textQuery" rows="10" placeholder="Enter your query here..."></textarea>
+            <textarea name="query" id="textQuery" rows="10" placeholder="Enter your query here..."><%= query || '' %></textarea>
         </div>
         <input type="submit" value="Ask Now" class="btn-submit">
     </form>

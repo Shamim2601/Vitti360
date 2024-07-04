@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const fileUpload = require('express-fileupload');
 
 const connectDB = require('./server/config/db');
 
@@ -28,6 +29,9 @@ app.use(session({
     mongoUrl: process.env.MONGODB_URI
   }),
 }));
+
+// Middleware to handle file uploads
+app.use(fileUpload());
 
 app.use(express.static('public'));
 
