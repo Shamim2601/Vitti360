@@ -4,7 +4,8 @@ const axios = require('axios');
 const Tutor = require('../models/Tutor');
 const regTutor = require('../models/regTutor');
 const sendMail = require('../helpers/mailer');
-const okrabyte = require("okrabyte");
+// const okrabyte = require("okrabyte");
+const ocrSpaceApi = require('ocr-space-api');
 const fs = require('fs');
 const path = require('path');
 
@@ -201,7 +202,7 @@ router.get('/ai-qa', async (req, res) => {
 
 // Route to handle text query form submission
 router.post('/ai-text-query', async (req, res) => {
-  const textQuery = "Give answer to the question mentioning the question at first: " + req.body.query;
+  const textQuery = "Give answer to the question mentioning the question at first:\n" + req.body.query;
 
   try {
     const apiKey = process.env.GOOGLE_API_KEY;
@@ -261,6 +262,7 @@ router.post('/ai-image-query', async (req, res) => {
     // res.send(`Image '${imageFile.name}' uploaded successfully.`);
 
     // Use okrabyte to decode text from the image
+    /*
     const textData = await new Promise((resolve, reject) => {
       okrabyte.decodeBuffer(fs.readFileSync(imagePath), (err, data) => {
         if (err) {
@@ -272,12 +274,28 @@ router.post('/ai-image-query', async (req, res) => {
         }
       });
     });
+    */
 
-    // console.log(textData);
+    const apiKey = 'K82448191288957'; // Your API key here
 
-    // Respond with the extracted text
-    // res.send(`Extracted text from image '${imageFile.name}':\n${textData}`);
-    res.render('main/ai-qa', { query: textData, output: null });
+    const options = {
+      apikey: apiKey,
+      language: 'eng', // Language code for English
+      imageFormat: 'image/png', // Image format (only png or jpg)
+      isOverlayRequired: true // Whether overlay is required or not
+    };
+
+    // Image file path
+    const imageFilePath = imagePath;
+
+    textData = null;
+    // Run OCR Space API and wait for the result
+    ocrSpaceApi.parseImageFromLocalFile(imageFilePath, options)
+      .then(function (parsedResult) {
+        res.render('main/ai-qa', { query: parsedResult.parsedText, output: null });
+      }).catch(function (err) {
+        console.log('ERROR:', err);
+      });
   } catch (error) {
     console.error('Error uploading image:', error);
     res.status(500).send('An error occurred while processing the image.');
@@ -294,9 +312,9 @@ router.post('/ai-image-query', async (req, res) => {
         const filePath = path.join(uploadsDir, file);
         fs.unlink(filePath, err => {
           if (err) {
-            console.error('Error deleting image:', err);
+            // console.error('Error deleting image:', err);
           } else {
-            console.log(`Image '${file}' deleted successfully.`);
+            // console.log(`Image '${file}' deleted successfully.`);
           }
         });
       });
