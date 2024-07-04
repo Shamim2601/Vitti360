@@ -1,9 +1,9 @@
-# QTutor
-## Qualified Tutors from BUET | DU | DMC | Cadet
+# Vitti360
+## A centralized system for Tutor searching, AI question solving and Job Preparation
 
 
-### Website : https://qtutor.onrender.com/
+### Website : https://www.vitti360.xyz/
 
 
-### Register as Tutor : https://qtutor.onrender.com/reg-tutor
+### Register as Tutor : https://www.vitti360.xyz/reg-tutor
 
