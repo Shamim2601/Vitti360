@@ -18,6 +18,9 @@ header.header {
   color: #fff;
   padding: 10px 0;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__logo {
@@ -25,21 +28,43 @@ header.header {
   text-decoration: none;
   font-size: 1.5em;
   font-weight: bold;
+  margin-left: 20px;
+}
+
+.header__nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
 }
 
 .header__nav ul {
+  display: flex;
   padding: 0;
   list-style: none;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .header__nav li {
-  display: inline;
-  margin-right: 10px;
+  flex-grow: 1;
 }
 
 .header__nav a {
-  color: #fff;
+  display: block;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background: black;
+  color: whitesmoke;
   text-decoration: none;
+  text-align: center;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.header__nav a:hover {
+  background: #fff;
+  color: #333;
 }
 
 footer.footer {
@@ -258,6 +283,77 @@ input[type="submit"]:hover {
 #regTutorForm input[type="submit"]:hover {
   background-color: #218838;
 }
+
+
+/* AI QA  */
+.ai-qa-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ai-qa-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ai-qa-container .form-group {
+  margin-bottom: 20px;
+}
+
+.ai-qa-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.ai-qa-container input[type="file"],
+.ai-qa-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.ai-qa-container textarea {
+  resize: none;
+}
+
+.ai-qa-container .btn-submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #6ebb6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Added margin for separation between forms */
+}
+
+.ai-qa-container .btn-submit:hover {
+  background-color: #5aa65a;
+}
+
+.ai-qa-container .output {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ai-qa-container .output h3 {
+  margin-top: 0;
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

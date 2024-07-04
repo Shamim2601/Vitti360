@@ -1,0 +1,28 @@
+<div class="ai-qa-container">
+    <h2>Give me Questions</h2>
+
+    <!-- Form for uploading image -->
+    <form action="/ai-image-query" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="imageInput"><b>Upload Image</b></label>
+            <input type="file" name="image" id="imageInput" accept="image/*">
+        </div>
+        <input type="submit" value="Submit Image" class="btn-submit">
+    </form>
+
+    <!-- Form for submitting text query -->
+    <form action="/ai-text-query" method="POST">
+        <div class="form-group">
+            <label for="textQuery"><b>Text Query</b></label>
+            <textarea name="query" id="textQuery" rows="10" placeholder="Enter your query here..."></textarea>
+        </div>
+        <input type="submit" value="Submit Text" class="btn-submit">
+    </form>
+
+    <div class="output">
+        <% if (output) { %>
+            <h3>Output</h3>
+            <p><%= output %></p>
+        <% } %>
+    </div>
+</div>
