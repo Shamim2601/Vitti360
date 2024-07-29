@@ -4,6 +4,7 @@ const Tutor = require('../models/Tutor');
 const Admin = require('../models/Admin');
 const Student = require('../models/Student');
 const regTutor = require('../models/regTutor');
+const Question = require('../models/Question');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -108,8 +109,34 @@ router.post('/register', async (req, res) => {
     }
   });
 
+/**
+ * POST /add-question
+ * Add a new question
+ */
+router.post('/add-question', async (req, res) => {
+  try {
+    const { questionText, category } = req.body;
+    
+    try {
+      const question = await Question.create({ 
+        questionText, 
+        category,
+        knowCount: 0, 
+        dontKnowCount: 0 
+      });
+      res.redirect('/dashboard');
+    } catch (error) {
+      res.status(500).json({ message: 'Internal server error', error });
+    }
 
-  /**
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error', error });
+  }
+});
+
+
+/**
  * GET /
  * Admin Dashboard
 */

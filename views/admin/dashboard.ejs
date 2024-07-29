@@ -1,14 +1,18 @@
 <div class="admin-controls">
-  <a class="btn-admin" id="reg-admin-btn">
-    <h3>New Admin</h3>
-  </a>
-  <a href="/student-list" class="btn-admin">
-    <h3>Manage Tutions</h3>
-  </a>
-
-  <a href="/reg-list" class="btn-admin">
-    <h3>Manage Tutor Registration</h3>
-  </a>
+  <div class="btn-container">
+    <a class="btn-admin" id="reg-admin-btn">
+      <h3>New Admin</h3>
+    </a>
+    <a class="btn-admin" id="add-qs-btn">
+      <h3>Add Question</h3>
+    </a>
+    <a href="/student-list" class="btn-admin">
+      <h3>Manage Tutions</h3>
+    </a>
+    <a href="/reg-list" class="btn-admin">
+      <h3>Manage Tutor Registration</h3>
+    </a>
+  </div>
 
   <form id="registerForm" action="/register" method="POST" class="reg-admin-form">
     <label for="username"><b>Username</b></label>
@@ -16,6 +20,25 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password">
     <input type="submit" value="Register" class="btn">
+  </form>
+
+  <form id="addQuestionForm" action="/add-question" method="POST" class="add-question-form" style="display: none;">
+    <label for="questionText"><b>Question Text</b></label>
+    <textarea placeholder="Enter the question text" name="questionText" required></textarea>
+
+    <label for="category"><b>Category</b></label>
+    <select name="category" required>
+      <option value="math">Math</option>
+      <option value="science">Science</option>
+      <option value="history">History</option>
+      <option value="bangla">Bangla</option>
+      <option value="english">English</option>
+      <option value="religion">Religion</option>
+      <option value="IQ">IQ</option>
+      <option value="other">Other</option>
+    </select>
+
+    <input type="submit" value="Add Question" class="btn">
   </form>
 </div>
 
@@ -100,20 +123,3 @@
     </tbody>
   </table>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const regAdminBtn = document.getElementById('reg-admin-btn');
-    const registerForm = document.getElementById('registerForm');
-
-    if (regAdminBtn && registerForm) { // Check if elements exist
-      regAdminBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        registerForm.style.display = registerForm.style.display === 'block' ? 'none' : 'block';
-      });
-    } else {
-      console.error('One or both elements not found.');
-    }
-  });
-
-</script>
