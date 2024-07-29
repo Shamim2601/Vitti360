@@ -1,76 +1,35 @@
-<div class="tag-heading">
-  <p class="tagline">BUET | DU | Medical | Cadet</p>
-</div>
-
-
-<div class="search-filter-div">
-  <strong>Find Qualified Tutors</strong>
-
-  <form action="/filter-tutors" method="GET" class="filter-form">
-    <select name="tag" id="tagFilter">
-      <option value="all">All</option>
-      <option value="buet">BUET</option>
-      <option value="du">DU</option>
-      <option value="medical">Medical</option>
-      <option value="cadet">Cadet</option>
-      <option value="other">Other</option>
-    </select>
-    <span><input type="submit" value="Filter"></span>
-  </form>
-
-  <form action="/search-tutors" method="GET" class="search-form">
-    <input type="text" name="query" placeholder="Search tutors...">
-    <input type="submit" value="Search">
-  </form>
-</div>
-
-
-<div class="main-tutors">
-  <% data.forEach(tutor=> { %>
-    <div class="tutordiv">
-      <h3>
-        <span>
-          t<%= tutor.id %>
-        </span> |
-        <span>
-          <%= tutor.tag %>
-        </span>
-      </h3>
-      <hr>
-      <p><strong>Name:</strong>
-        <%= tutor.name %>
-      </p>
-      <p><strong>Institution:</strong>
-        <%= tutor.institution %>
-      </p>
-      <p><strong>Department:</strong>
-        <%= tutor.dept %>
-      </p>
-      <p><strong>HSC Batch:</strong>
-        <%= tutor.hsc %>
-      </p>
-      <p><strong>Background:</strong>
-        <%= tutor.background %>
-      </p>
-      <p><strong>College:</strong>
-        <%= tutor.college %>
-      </p>
-      <p><strong>Expertise:</strong>
-        <%= tutor.expertise %>
-      </p>
-      <p><strong>Mode:</strong>
-        <%= tutor.mode %>
-      </p>
-      <p><strong>Pref. Area:</strong>
-        <%= tutor.pref %>
-      </p>
-
-      <a href="https://wa.me/+8801765749339?text=Hello%2C%0AWant%20to%20know%20more%20about%20Tutor%20%20t<%= tutor.id %>%20%3A%20<%= tutor.name %>%20%3A%20<%= tutor.tag %>"
-        target="_blank" class="button button2"><strong>Get Tutor</strong></a>
-
-    </div>
+<div class="q-container">
+  <div class="q-filter-container">
+    <form id="q-filterForm" action="/" method="GET">
+      <select name="category" id="categorySelect">
+        <option value="bangla" <%= category === 'bangla' ? 'selected' : '' %>>Bangla</option>
+        <option value="english" <%= category === 'english' ? 'selected' : '' %>>English</option>
+        <option value="science" <%= category === 'science' ? 'selected' : '' %>>Science</option>
+        <option value="history" <%= category === 'history' ? 'selected' : '' %>>History</option>
+        <option value="religion" <%= category === 'religion' ? 'selected' : '' %>>Religion</option>
+        <option value="math" <%= category === 'math' ? 'selected' : '' %>>Math</option>
+        <option value="IQ" <%= category === 'IQ' ? 'selected' : '' %>>IQ</option>
+        <option value="other" <%= category === 'other' ? 'selected' : '' %>>Other</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+  <!-- <div class="q-category-heading">
+    <%= category.charAt(0).toUpperCase() + category.slice(1) %>
+  </div> -->
+  <div class="q-cards-container">
+    <% questions.forEach(question => { %>
+      <div class="q-card">
+        <h2>
+          <%= question.questionText %>
+        </h2>
+        <p><strong>People Who Know:</strong>
+          <%= question.knowCount %>
+        </p>
+        <p><strong>People Who Don't Know:</strong>
+          <%= question.dontKnowCount %>
+        </p>
+      </div>
     <% }) %>
+  </div>
 </div>
-
-
-</section>

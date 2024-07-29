@@ -3,19 +3,53 @@ const router = express.Router();
 const axios = require('axios');
 const Tutor = require('../models/Tutor');
 const regTutor = require('../models/regTutor');
+const Question = require('../models/Question');
 const sendMail = require('../helpers/mailer');
-// const okrabyte = require("okrabyte");
 const ocrSpaceApi = require('ocr-space-api');
 const fs = require('fs');
 const path = require('path');
+
 
 // Routes
 
 /**
  * GET /
+ * Home Page
+ */
+router.get('/', async (req, res) => {
+  try {
+    // Define your tags
+    const tags = ['bangla', 'english', 'science', 'history', 'religion', 'math', 'IQ', 'other'];
+    
+    // Select a random tag from the tags array
+    const randomCategory = tags[Math.floor(Math.random() * tags.length)];
+
+    const category = req.query.category || randomCategory;
+    
+    const questions = await Question.find({ category }).sort({ knowCount: -1 });
+
+    const locals = {
+      title: "Vitti360 | Welcome",
+      description: "কিছু জিজ্ঞাসা - যাচাই করো ভিত্তি"
+    };
+
+    res.render('index', {
+      locals,
+      questions,
+      category
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+/**
+ * Tutors /
  * HOME
 */
-router.get('', async (req, res) => {
+router.get('/tutors', async (req, res) => {
   try {
     // console.log(req.query);
     const locals = {
@@ -27,10 +61,9 @@ router.get('', async (req, res) => {
     const data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
 
 
-    res.render('index', {
+    res.render('main/tutors', {
       locals,
       data,
-      currentRoute: '/'
     });
 
   } catch (error) {
