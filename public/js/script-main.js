@@ -1,4 +1,6 @@
 let currentIndex = 0;
+let currentKnowCount = 0;
+let currentDontKnowCount = 0;
 const cards = document.querySelectorAll('.q-card');
 
 function showCard(index) {
@@ -8,7 +10,19 @@ function showCard(index) {
   updateButtons();
 }
 
-function showNext() {
+function showNextY() {
+  const knowCountElement = document.getElementById('knowCount');
+  currentKnowCount++;
+  knowCountElement.textContent = currentKnowCount;
+  if (currentIndex < cards.length - 1) {
+    showCard(currentIndex + 1);
+  }
+}
+
+function showNextN() {
+  const dontKnowCountElement = document.getElementById('dontKnowCount');
+  currentDontKnowCount++;
+  dontKnowCountElement.textContent = currentDontKnowCount;
   if (currentIndex < cards.length - 1) {
     showCard(currentIndex + 1);
   }
@@ -24,7 +38,7 @@ function showShareLink(questionId) {
   // Construct the shareable link
   const baseURL = 'https://vitti360.xyz/jiggasa/';
   const shareableLink = `${baseURL}${questionId}`;
-  
+
   // Copy the link to the clipboard
   navigator.clipboard.writeText(shareableLink)
     .then(() => {
@@ -33,14 +47,7 @@ function showShareLink(questionId) {
     .catch(err => {
       console.error('Failed to copy: ', err);
     });
-  
+
   // Prevent default link behavior
   return false;
 }
-
-function updateButtons() {
-  document.getElementById('prevBtn').disabled = currentIndex === 0;
-  document.getElementById('nextBtn').disabled = currentIndex === cards.length - 1;
-}
-
-updateButtons();

@@ -129,9 +129,7 @@ router.post('/add-question', authMiddleware, async (req, res) => {
     const newQuestion = new Question({
       id: highestId,
       questionText: req.body.questionText,
-      category: req.body.category,
-      knowCount: 0,
-      dontKnowCount: 0
+      category: req.body.category
     });
 
     await newQuestion.save();

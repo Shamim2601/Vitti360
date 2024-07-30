@@ -16,28 +16,24 @@
   </div>
 
   <div class="q-cards-container">
+    <div class="q-card-badge">
+      <p id="knowCount">0</p>
+      <p id="dontKnowCount">0</p>
+    </div>
     <% questions.forEach((question, index) => { %>
       <div class="q-card <%= index === 0 ? 'active' : '' %>">
-        <div class="q-card-badge">
-          <p><%= question.knowCount %></p>
-          <p><%= question.dontKnowCount %></p>
-        </div>
         <div class="q-card-text">
           <h1><%= question.questionText %> <br> <% question.id %></h1>
         </div>
         <div class="q-card-footer">
           <span>
-            <a href="/inc-know/<%= question._id %>">জানি</a>
-            <a href="/inc-dont-know/<%= question._id %>">জানি না</a>
-            <a href="#" onclick="showShareLink('<%= question._id %>')">🔗</a>
+            <a onclick="showPrev()">◀️</a>
+            <a onclick="showNextY()" >জানি</a>
+            <a onclick="showNextN()" >জানি না</a>
+            <a onclick="showShareLink('<%= question._id %>')">🔗</a>
           </span>
         </div>
       </div>
     <% }) %>
-  </div>
-
-  <div class="carousel-controls">
-    <button id="prevBtn" onclick="showPrev()">◀️</button>
-    <button id="nextBtn" onclick="showNext()">▶️</button>
   </div>
 </div>

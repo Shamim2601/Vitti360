@@ -136,14 +136,22 @@ button:focus {
   position: relative;
   width: 70%;
   border: 5px solid #007bff; /* Blue border */
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
 }
+
 
 .q-card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 80%;
+  min-height: 300px;
   padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   text-align: center;
   display: none;
 }
@@ -157,6 +165,8 @@ button:focus {
   justify-content: space-between;
   background: linear-gradient(to right, green 50%, red 50%);
   padding: 5px;
+  margin-top: 10px;
+  width: 70%;
   border-radius: 5px;
   color: white;
   margin-bottom: 10px;
@@ -193,27 +203,6 @@ button:focus {
   cursor: pointer;
   border-radius: 5px;
   margin: 5px;
-}
-
-.carousel-controls {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.carousel-controls button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.carousel-controls button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
 }
 
 

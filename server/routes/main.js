@@ -40,7 +40,7 @@ router.get('/jiggasa', async (req, res) => {
 
     const category = req.query.category || randomCategory;
     
-    const questions = await Question.find({ category }).sort({ knowCount: -1 });
+    const questions = await Question.find({ category }).sort({ id: 1 });
     
     const locals = {
       title: "Vitti360 | Welcome",
@@ -85,40 +85,6 @@ router.get('/jiggasa/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-
-
-// Increment knowCount by 1
-router.get('/inc-know/:id', async (req, res) => {
-  try {
-    const questionId = req.params.id; // Get the ID from the URL parameters
-    await Question.findByIdAndUpdate(questionId, { $inc: { knowCount: 1 } });
-
-    // Redirect to the question page using the actual ID
-    res.redirect(`/jiggasa/${questionId}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-
-
-// Increment dontKnowCount by 1
-router.get('/inc-dont-know/:id', async (req, res) => {
-  try {
-    const questionId = req.params.id; // Get the ID from the URL parameters
-    await Question.findByIdAndUpdate(questionId, { $inc: { dontKnowCount: 1 } });
-
-    // Redirect to the question page using the actual ID
-    res.redirect(`/jiggasa/${questionId}`);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-
-
-// Route to generate a shareable link for a question
-
 
 
 /**
