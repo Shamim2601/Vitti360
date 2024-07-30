@@ -169,7 +169,7 @@ router.get('/filter-tutors', async (req, res) => {
       data = await Tutor.find({ tag: req_tag }).sort({ rating: -1, id: 1 });
     }
 
-    res.render('index', {
+    res.render('main/tutors', {
       locals,
       data,
       currentRoute: '/filter-tutors'
@@ -207,7 +207,7 @@ router.get('/search-tutors', async (req, res) => {
       ]
     }).sort({ rating: -1, id: 1 });
 
-    res.render('index', {
+    res.render('main/tutors', {
       locals,
       data,
       currentRoute: '/search-tutors'
@@ -272,7 +272,7 @@ router.post('/reg-tutor', async (req, res) => {
 
       await sendMail('saimaneeti367@gmail.com', subject, text);
 
-      res.redirect('/');
+      res.redirect('/tutors');
     } catch (error) {
       console.log(error);
     }
