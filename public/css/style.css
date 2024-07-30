@@ -134,7 +134,7 @@ button:focus {
 
 .q-cards-container {
   position: relative;
-  width: 90%;
+  width: 95%;
   border: 5px solid #007bff; /* Blue border */
   display: flex;
   flex-direction: column; /* Align items vertically */
