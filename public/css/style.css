@@ -79,6 +79,7 @@ footer.footer {
 /* Questions Jiggasa */
 .q-container {
   display: flex;
+  background-color: burlywood;
   flex-direction: column;
   align-items: center;
   padding: 20px;
@@ -86,71 +87,133 @@ footer.footer {
 
 .q-filter-container {
   margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #007bff; /* Bluish border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background color */
 }
 
 #q-filterForm {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 #categorySelect {
-  margin-right: 10px;
   padding: 10px;
+  border: 1px solid #ced4da; /* Light gray border for the dropdown */
+  border-radius: 4px; /* Rounded corners */
   font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  outline: none;
+}
+
+#categorySelect:focus {
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.25); /* Add a subtle shadow on focus */
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+  background-color: #007bff; /* Blue background */
+  color: #fff; /* White text */
   border: none;
+  padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
 }
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Add a subtle shadow on focus */
+}
+
 
 .q-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.q-category-heading {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-  padding: 10px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  position: relative;
+  width: 70%;
+  border: 5px solid #007bff; /* Blue border */
 }
 
 .q-card {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 10px;
+  width: 100%;
   padding: 20px;
   text-align: center;
+  display: none;
 }
 
-.q-card h2 {
-  font-size: 20px;
+.q-card.active {
+  display: block;
+}
+
+.q-card-badge {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to right, green 50%, red 50%);
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
   margin-bottom: 10px;
 }
 
-.q-card p {
-  margin: 5px 0;
-  font-size: 16px;
+.q-card-badge span {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.q-card-badge p {
+  margin: 0;
+  padding: 0 5px;
+  flex: 1;
+  text-align: center;
+}
+
+.q-card-text {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.q-card-footer {
+  margin-top: 15px;
+}
+
+.q-card-footer a {
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.carousel-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.carousel-controls button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }
 
 

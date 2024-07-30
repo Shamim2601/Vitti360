@@ -1,35 +1,43 @@
 <div class="q-container">
   <div class="q-filter-container">
-    <form id="q-filterForm" action="/" method="GET">
+    <form id="q-filterForm" action="/jiggasa" method="GET">
       <select name="category" id="categorySelect">
-        <option value="bangla" <%= category === 'bangla' ? 'selected' : '' %>>Bangla</option>
-        <option value="english" <%= category === 'english' ? 'selected' : '' %>>English</option>
-        <option value="science" <%= category === 'science' ? 'selected' : '' %>>Science</option>
-        <option value="history" <%= category === 'history' ? 'selected' : '' %>>History</option>
-        <option value="religion" <%= category === 'religion' ? 'selected' : '' %>>Religion</option>
-        <option value="math" <%= category === 'math' ? 'selected' : '' %>>Math</option>
-        <option value="IQ" <%= category === 'IQ' ? 'selected' : '' %>>IQ</option>
-        <option value="other" <%= category === 'other' ? 'selected' : '' %>>Other</option>
+        <option value="science" <%=category==='science' ? 'selected' : '' %>>বিজ্ঞান</option>
+        <option value="math" <%=category==='math' ? 'selected' : '' %>>গণিত</option>
+        <option value="history" <%=category==='history' ? 'selected' : '' %>>ইতিহাস</option>
+        <option value="bangla" <%=category==='bangla' ? 'selected' : '' %>>বাংলা</option>
+        <option value="english" <%=category==='english' ? 'selected' : '' %>>English</option>
+        <option value="religion" <%=category==='religion' ? 'selected' : '' %>>ধর্ম</option>
+        <option value="IQ" <%=category==='IQ' ? 'selected' : '' %>>IQ</option>
+        <option value="other" <%=category==='other' ? 'selected' : '' %>>বিবিধ</option>
       </select>
       <button type="submit">Filter</button>
     </form>
   </div>
-  <!-- <div class="q-category-heading">
-    <%= category.charAt(0).toUpperCase() + category.slice(1) %>
-  </div> -->
+
   <div class="q-cards-container">
-    <% questions.forEach(question => { %>
-      <div class="q-card">
-        <h2>
-          <%= question.questionText %>
-        </h2>
-        <p><strong>People Who Know:</strong>
-          <%= question.knowCount %>
-        </p>
-        <p><strong>People Who Don't Know:</strong>
-          <%= question.dontKnowCount %>
-        </p>
+    <% questions.forEach((question, index) => { %>
+      <div class="q-card <%= index === 0 ? 'active' : '' %>">
+        <div class="q-card-badge">
+          <p><%= question.knowCount %></p>
+          <p><%= question.dontKnowCount %></p>
+        </div>
+        <div class="q-card-text">
+          <h1><%= question.questionText %> <br> <% question.id %></h1>
+        </div>
+        <div class="q-card-footer">
+          <span>
+            <a href="/inc-know/<%= question._id %>">আমি জানি</a>
+            <a href="/inc-dont-know/<%= question._id %>">আমি জানি না</a>
+            <a href="#" onclick="showShareLink('<%= question._id %>')">🔗</a>
+          </span>
+        </div>
       </div>
     <% }) %>
+  </div>
+
+  <div class="carousel-controls">
+    <button id="prevBtn" onclick="showPrev()">◀️</button>
+    <button id="nextBtn" onclick="showNext()">▶️</button>
   </div>
 </div>

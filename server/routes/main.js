@@ -14,9 +14,23 @@ const path = require('path');
 
 /**
  * GET /
- * Home Page
+ * Landing Route
  */
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
+  try {
+    res.redirect('/jiggasa');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+  
+});
+
+/**
+ * GET /
+ * JIGGASA
+ */
+router.get('/jiggasa', async (req, res) => {
   try {
     // Define your tags
     const tags = ['bangla', 'english', 'science', 'history', 'religion', 'math', 'IQ', 'other'];
@@ -27,7 +41,7 @@ router.get('/', async (req, res) => {
     const category = req.query.category || randomCategory;
     
     const questions = await Question.find({ category }).sort({ knowCount: -1 });
-
+    
     const locals = {
       title: "Vitti360 | Welcome",
       description: "কিছু জিজ্ঞাসা - যাচাই করো ভিত্তি"
@@ -44,6 +58,68 @@ router.get('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+// Route to get a specific question by ID and render it
+router.get('/jiggasa/:id', async (req, res) => {
+  try {
+    const questionId = req.params.id; // Extract question ID from URL params
+
+    // Find the question by ID
+    const question = await Question.findById(questionId);
+    const category = question.category;
+    const locals = {
+      title: "Vitti360 | Welcome",
+      description: "কিছু জিজ্ঞাসা - যাচাই করো ভিত্তি"
+    };
+
+    // Check if the question was found
+    if (!question) {
+      return res.status(404).send('Question not found');
+    }
+
+    const questions = [question];
+    // Render the index view with the question data
+    res.render('index', { locals, questions, category });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+// Increment knowCount by 1
+router.get('/inc-know/:id', async (req, res) => {
+  try {
+    const questionId = req.params.id; // Get the ID from the URL parameters
+    await Question.findByIdAndUpdate(questionId, { $inc: { knowCount: 1 } });
+
+    // Redirect to the question page using the actual ID
+    res.redirect(`/jiggasa/${questionId}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+// Increment dontKnowCount by 1
+router.get('/inc-dont-know/:id', async (req, res) => {
+  try {
+    const questionId = req.params.id; // Get the ID from the URL parameters
+    await Question.findByIdAndUpdate(questionId, { $inc: { dontKnowCount: 1 } });
+
+    // Redirect to the question page using the actual ID
+    res.redirect(`/jiggasa/${questionId}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+// Route to generate a shareable link for a question
+
+
 
 /**
  * Tutors /

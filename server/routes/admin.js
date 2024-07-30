@@ -109,32 +109,38 @@ router.post('/register', async (req, res) => {
     }
   });
 
+  
 /**
  * POST /add-question
- * Add a new question
+ * Create a new question with an autoincrement ID
  */
-router.post('/add-question', async (req, res) => {
+router.post('/add-question', authMiddleware, async (req, res) => {
   try {
-    const { questionText, category } = req.body;
-    
-    try {
-      const question = await Question.create({ 
-        questionText, 
-        category,
-        knowCount: 0, 
-        dontKnowCount: 0 
-      });
-      res.redirect('/dashboard');
-    } catch (error) {
-      res.status(500).json({ message: 'Internal server error', error });
+    // Find the question with the highest ID
+    const questions = await Question.find({}, { id: 1 }).sort({ id: -1 }).limit(1);
+    let highestId = 1;
+
+    if (questions.length > 0) {
+      const highestIdPrev = questions[0].id;
+      highestId = highestIdPrev + 1;
     }
 
+    // Create a new question with the new ID
+    const newQuestion = new Question({
+      id: highestId,
+      questionText: req.body.questionText,
+      category: req.body.category,
+      knowCount: 0,
+      dontKnowCount: 0
+    });
+
+    await newQuestion.save();
+    res.redirect('/dashboard'); // Redirect to the appropriate page after adding
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Internal server error', error });
   }
 });
-
 
 /**
  * GET /
