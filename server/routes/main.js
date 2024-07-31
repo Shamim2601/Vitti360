@@ -88,96 +88,50 @@ router.get('/jiggasa/:id', async (req, res) => {
 
 
 /**
- * Tutors /
- * HOME
-*/
+ * GET /
+ * JIGGASA
+ */
 router.get('/tutors', async (req, res) => {
   try {
-    // console.log(req.query);
     const locals = {
       title: "Vitti360 | Welcome",
       description: "Simple Site created with NodeJs, Express & MongoDb."
-    }
-
-    const tags = ['buet', 'du', 'medical', 'cadet'];
-    const data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
-
-
-    res.render('main/tutors', {
-      locals,
-      data,
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-
-});
-
-/**
- * GET /filter-tutors
- * Route to filter tutors by tag
- */
-router.get('/filter-tutors', async (req, res) => {
-  try {
-    const locals = {
-      title: 'Tutors',
-      description: 'Tutor by tag'
-    }
-
-    const req_tag = req.query.tag;
-
-    let data;
-    if (req_tag === 'all') {
-      const tags = ['buet', 'du', 'medical', 'cadet'];
-      data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
-    } else {
-      data = await Tutor.find({ tag: req_tag }).sort({ rating: -1, id: 1 });
-    }
-
-    res.render('main/tutors', {
-      locals,
-      data,
-      currentRoute: '/filter-tutors'
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-
-/**
- * GET /search-tutors
- * Route to search tutors by name, preferred area, institution, department, college, or expertise
- */
-router.get('/search-tutors', async (req, res) => {
-  try {
-    const locals = {
-      title: 'Search Results',
-      description: 'Tutors matching your search criteria'
     };
 
+    const req_tag = req.query.tag || 'all';
     const searchQuery = req.query.query;
-    const searchRegex = new RegExp(searchQuery, 'i'); // Case-insensitive search
+    const tags = ['buet', 'du', 'medical', 'cadet'];
+    let data;
 
-    // Search for tutors matching the query in multiple fields
-    const data = await Tutor.find({
-      $or: [
-        { name: searchRegex },
-        { pref: searchRegex },
-        { institution: searchRegex },
-        { dept: searchRegex },
-        { college: searchRegex },
-        { expertise: searchRegex }
-      ]
-    }).sort({ rating: -1, id: 1 });
+    if (searchQuery) {
+      // If a search query is provided, search by query
+      const searchRegex = new RegExp(searchQuery, 'i'); // Case-insensitive search
+      data = await Tutor.find({
+        $or: [
+          { name: searchRegex },
+          { pref: searchRegex },
+          { institution: searchRegex },
+          { dept: searchRegex },
+          { college: searchRegex },
+          { expertise: searchRegex }
+        ]
+      }).sort({ rating: -1, id: 1 });
+    } else if (req_tag !== 'all') {
+      // If a tag is provided, filter by tag
+      data = await Tutor.find({ tag: req_tag }).sort({ rating: -1, id: 1 });
+    } else {
+      // Default case: get all tutors
+      data = await Tutor.find({ tag: { $in: tags } }).sort({ tag: 1, rating: -1, id: 1 });
+    }
 
     res.render('main/tutors', {
       locals,
       data,
-      currentRoute: '/search-tutors'
+      currentTag: req_tag,
+      searchQuery, // Pass the search query to the template if it exists
+      currentRoute: '/tutors'
     });
+
   } catch (error) {
     console.log(error);
     res.status(500).send('Server error');

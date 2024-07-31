@@ -1,76 +1,47 @@
 <div class="tag-heading">
-    <p class="tagline">BUET | DU | Medical | Cadet</p>
-  </div>
-  
-  
-  <div class="search-filter-div">
-    <strong>Find Qualified Tutors</strong>
-  
-    <form action="/filter-tutors" method="GET" class="filter-form">
-      <select name="tag" id="tagFilter">
-        <option value="all">All</option>
-        <option value="buet">BUET</option>
-        <option value="du">DU</option>
-        <option value="medical">Medical</option>
-        <option value="cadet">Cadet</option>
-        <option value="other">Other</option>
-      </select>
-      <span><input type="submit" value="Filter"></span>
-    </form>
-  
-    <form action="/search-tutors" method="GET" class="search-form">
-      <input type="text" name="query" placeholder="Search tutors...">
-      <input type="submit" value="Search">
-    </form>
-  </div>
-  
-  
-  <div class="main-tutors">
-    <% data.forEach(tutor=> { %>
-      <div class="tutordiv">
-        <h3>
-          <span>
-            t<%= tutor.id %>
-          </span> |
-          <span>
-            <%= tutor.tag %>
-          </span>
-        </h3>
-        <hr>
-        <p><strong>Name:</strong>
-          <%= tutor.name %>
-        </p>
-        <p><strong>Institution:</strong>
-          <%= tutor.institution %>
-        </p>
-        <p><strong>Department:</strong>
-          <%= tutor.dept %>
-        </p>
-        <p><strong>HSC Batch:</strong>
-          <%= tutor.hsc %>
-        </p>
-        <p><strong>Background:</strong>
-          <%= tutor.background %>
-        </p>
-        <p><strong>College:</strong>
-          <%= tutor.college %>
-        </p>
-        <p><strong>Expertise:</strong>
-          <%= tutor.expertise %>
-        </p>
-        <p><strong>Mode:</strong>
-          <%= tutor.mode %>
-        </p>
-        <p><strong>Pref. Area:</strong>
-          <%= tutor.pref %>
-        </p>
-  
-        <a href="https://wa.me/+8801765749339?text=Hello%2C%0AWant%20to%20know%20more%20about%20Tutor%20%20t<%= tutor.id %>%20%3A%20<%= tutor.name %>%20%3A%20<%= tutor.tag %>"
-          target="_blank" class="button button2"><strong>Get Tutor</strong></a>
-  
-      </div>
-      <% }) %>
-  </div>
-  
-  
-  </section>
+  <p class="tagline">BUET | DU | Medical | Cadet</p>
+</div>
+
+<div class="search-filter-div">
+  <strong>Find Qualified Tutors</strong>
+
+  <form action="/tutors" method="GET" class="filter-form">
+    <select name="tag" id="tagFilter">
+      <option value="all" <%= currentTag === 'all' ? 'selected' : '' %>>All</option>
+      <option value="buet" <%= currentTag === 'buet' ? 'selected' : '' %>>BUET</option>
+      <option value="du" <%= currentTag === 'du' ? 'selected' : '' %>>DU</option>
+      <option value="medical" <%= currentTag === 'medical' ? 'selected' : '' %>>Medical</option>
+      <option value="cadet" <%= currentTag === 'cadet' ? 'selected' : '' %>>Cadet</option>
+      <option value="other" <%= currentTag === 'other' ? 'selected' : '' %>>Other</option>
+    </select>
+    <span><input type="submit" value="Filter"></span>
+  </form>
+
+  <form action="/tutors" method="GET" class="search-form">
+    <input type="text" name="query" placeholder="Search tutors..." value="<%= searchQuery || '' %>">
+    <input type="submit" value="Search">
+  </form>
+</div>
+
+<div class="main-tutors">
+  <% data.forEach(tutor => { %>
+    <div class="tutordiv">
+      <h3>
+        <span>t<%= tutor.id %></span> |
+        <span><%= tutor.tag %></span>
+      </h3>
+      <hr>
+      <p><strong>Name:</strong> <%= tutor.name %></p>
+      <p><strong>Institution:</strong> <%= tutor.institution %></p>
+      <p><strong>Department:</strong> <%= tutor.dept %></p>
+      <p><strong>HSC Batch:</strong> <%= tutor.hsc %></p>
+      <p><strong>Background:</strong> <%= tutor.background %></p>
+      <p><strong>College:</strong> <%= tutor.college %></p>
+      <p><strong>Expertise:</strong> <%= tutor.expertise %></p>
+      <p><strong>Mode:</strong> <%= tutor.mode %></p>
+      <p><strong>Pref. Area:</strong> <%= tutor.pref %></p>
+
+      <a href="https://wa.me/+8801765749339?text=Hello%2C%0AWant%20to%20know%20more%20about%20Tutor%20%20t<%= tutor.id %>%20%3A%20<%= tutor.name %>%20%3A%20<%= tutor.tag %>" target="_blank" class="button button2"><strong>Get Tutor</strong></a>
+    </div>
+  <% }) %>
+</div>
