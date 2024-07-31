@@ -36,7 +36,7 @@ function showPrev() {
 
 function showShareLink(questionId) {
   // Construct the shareable link
-  const baseURL = 'https://vitti360.xyz/jiggasa/';
+  const baseURL = 'https://vitti360.xyz/jiggasa?id=';
   const shareableLink = `${baseURL}${questionId}`;
 
   // Copy the link to the clipboard

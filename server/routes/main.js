@@ -34,19 +34,35 @@ router.get('/jiggasa', async (req, res) => {
   try {
     // Define your tags
     const tags = ['bangla', 'english', 'science', 'history', 'religion', 'math', 'IQ', 'other'];
-    
+
     // Select a random tag from the tags array
     const randomCategory = tags[Math.floor(Math.random() * tags.length)];
 
     const category = req.query.category || randomCategory;
-    
-    const questions = await Question.find({ category }).sort({ id: 1 });
-    
+    const questionId = req.query.id;
+
+    let questions;
+    if (questionId) {
+      // Find the question by the custom 'id' field
+      const question = await Question.findOne({ id: questionId });
+
+      // Check if the question was found
+      if (!question) {
+        return res.status(404).send('Question not found');
+      }
+
+      questions = [question];
+    } else {
+      // Find questions by category
+      questions = await Question.find({ category }).sort({ id: 1 });
+    }
+
     const locals = {
       title: "Vitti360 | Welcome",
       description: "কিছু জিজ্ঞাসা - যাচাই করো ভিত্তি"
     };
 
+    // Render the index view with the question data
     res.render('index', {
       locals,
       questions,
@@ -54,42 +70,16 @@ router.get('/jiggasa', async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send('Internal Server Error');
   }
 });
 
-// Route to get a specific question by ID and render it
-router.get('/jiggasa/:id', async (req, res) => {
-  try {
-    const questionId = req.params.id; // Extract question ID from URL params
-
-    // Find the question by ID
-    const question = await Question.findById(questionId);
-    const category = question.category;
-    const locals = {
-      title: "Vitti360 | Welcome",
-      description: "কিছু জিজ্ঞাসা - যাচাই করো ভিত্তি"
-    };
-
-    // Check if the question was found
-    if (!question) {
-      return res.status(404).send('Question not found');
-    }
-
-    const questions = [question];
-    // Render the index view with the question data
-    res.render('index', { locals, questions, category });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
 
 
 /**
  * GET /
- * JIGGASA
+ * TUTORS
  */
 router.get('/tutors', async (req, res) => {
   try {
@@ -140,7 +130,7 @@ router.get('/tutors', async (req, res) => {
 
 
 /**
- * GET /
+ * ADMIN GET /
  * REG Tutors
 */
 router.get('/reg-tutor', async (req, res) => {
@@ -162,7 +152,7 @@ router.get('/reg-tutor', async (req, res) => {
 
 
 /**
- * POST /
+ * ADMIN POST /
  * reg tutor
 */
 router.post('/reg-tutor', async (req, res) => {
